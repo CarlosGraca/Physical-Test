@@ -5,6 +5,9 @@
 <!-- Bootstrap 3.3.2 JS -->
 <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script>
 
+<!-- Select2 -->
+<script src="{{ asset('/plugins/select2/select2.full.min.js')}}"></script>
+
 <script>
   var AdminLTEOptions = {
     //Enable sidebar expand on hover effect for sidebar mini

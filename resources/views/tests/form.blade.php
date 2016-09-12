@@ -91,7 +91,7 @@
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('class','Class.:') !!}
+			{!! Form::label('class','Classificação:') !!}
 			{!! Form::text('class', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
@@ -117,6 +117,12 @@
 			{!! Form::text('massa_magra', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('class','Classificação:') !!}
+			{!! Form::text('class', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
 </div>
 <div class="row">
 	<span ><strong class="title">Medidas Circunferências</strong></span>
@@ -135,7 +141,7 @@
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('quadril','Quadril  (cm)') !!}
+			{!! Form::label('quadril','Quadril  (cm):') !!}
 			{!! Form::text('quadril', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
@@ -153,8 +159,66 @@
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('rel_cin_qua','Relação Cintura/Quadril') !!}
+			{!! Form::label('rel_cin_qua','Relação Cintura/Quadril:') !!}
 			{!! Form::text('rel_cin_qua', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
  </div>
+<div class="row">
+    <span ><strong class="title">Testes Fisicos</strong></span>
+    <hr class="h-divider" >	
+    <div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('taxa_matabolica','Taxa metabóloca basal:') !!}
+			{!! Form::text('taxa_matabolica', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('frequesia','Frquência Cardíaca Repouso (bpm):') !!}
+			{!! Form::text('frequesia', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('pressao_sis','Pressão Arterial Sistólica (mmHg):') !!}
+			{!! Form::text('pressao_sis', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('pressao_dis','Pressão Arterial Diastólica (mmHg):') !!}
+			{!! Form::text('pressao_dis', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('pontencia_aerobica','Pontência Aeróbica (ml/Kg/min):') !!}
+			{!! Form::text('pontencia_aerobica', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('forca_abdominal','Força Abdominal (nº rep/1min):') !!}
+			{!! Form::text('forca_abdominal', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('forca_mmii','Força MMII (IVC cm):') !!}
+			{!! Form::text('forca_mmii', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('flexibilidade','Flexibilidade (cm):') !!}
+			{!! Form::text('cintura', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('forca_mms','Força MMSS (nº de repetições):') !!}
+			{!! Form::text('forca_mms', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+</div>

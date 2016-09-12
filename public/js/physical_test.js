@@ -25,12 +25,12 @@ $('document').ready(function(){
             var imc = get_imc(peso,estatura);
             $('#imc').val(imc);
             var idade = $('#age').val();
-            if (((idade >= 15) || (idade <= 19)) &&  ((imc >= 18) || (imc <= 21.6)) ){                
+            if (((idade >= 15) || (idade <= 19)) &&  ((imc >= 18) || (imc <= 21.6)) ){
                 $('#class').val('Exelente');
             }else{
                 $('#class').val(' ');
-            } 
-        }  
+            }
+        }
     });
 
     $('#estatura').on('change',function(){
@@ -40,12 +40,12 @@ $('document').ready(function(){
             var imc = get_imc(peso,estatura);
             var idade = $('#age').val();
             $('#imc').val(imc);
-            if (((idade >= 15) || (idade <= 19)) &&  ((imc >= 18) || (imc <= 21.6)) ){                
+            if (((idade >= 15) || (idade <= 19)) &&  ((imc >= 18) || (imc <= 21.6)) ){
                 $('#class').val('Exelente');
             }else{
                 $('#class').val(' ');
-            }            
-        }  
+            }
+        }
     });
 
     $('#gordura').on('change',function(){
@@ -75,7 +75,7 @@ function get_idade(date_test,date_nasc){
     test = dt_test.getDate()+(dt_test.getMonth()*30)+(dt_test.getFullYear()*365);
     var nasc = dt_nasc.getDate()+(dt_nasc.getMonth()*30)+(dt_nasc.getFullYear()*365);
     idade = (test - nasc)/365;
-    return idade;    
+    return idade;
 }
 
 function get_imc(peso,estatura){
@@ -91,4 +91,108 @@ function get_peso_gordura(gordura,peso){
 function get_massa_magra(peso,pesso_gordura){
     var mm = peso-pesso_gordura;
     return mm;
+}
+
+//POPOVER
+$(function () {
+  $('[data-toggle="popover"]').popover()
+});
+
+
+
+//CRIAR POPOVER DE CLASSIFICAÇÃO CONSOANTE A IDADE DE SEXO
+$(document).on('change','#sexo',function() {
+  sexo = $(this).val();
+  idade = $('#age').val();
+  if(idade == ""){
+    alert('Insira a sua data de nascimento');
+    return false;
+  }
+
+  //SEXO == 1 => MASCULINO
+  //SEXO == 2 => FEMININO
+  //SEXO == 0 => OPÇÃO DEFAULT
+
+  popoverClassificacao(idade,sexo);
+
+});
+
+function popoverClassificacao(idade, sexo) {
+    if(idade >= 18 && idade <= 19){
+      switch (sexo) {
+        case '1':
+            var content = '18 a 23 - Excelente Minimo: 18 Máximo: 26';
+            $('#classificacao').attr('data-content',content);
+          break;
+        case '2':
+            var content = '18 a 21,6 - Excelente';
+            $('#classificacao').attr('data-content',content);
+          break;
+      }
+    }
+
+    if(idade >= 20 && idade <= 29){
+      switch (sexo) {
+        case '1':
+            var content = '18 a 23 - Excelente | Minimo: 18 - Máximo: 26';
+            $('#classificacao').attr('data-content',content);
+          break;
+        case '2':
+            var content = '18 a 21,6 - Excelente';
+            $('#classificacao').attr('data-content',content);
+          break;
+      }
+    }
+
+    if(idade >= 30 && idade <= 39){
+      switch (sexo) {
+        case '1':
+            var content = '18 a 24 - Excelente | Minimo: 18 - Máximo: 26';
+            $('#classificacao').attr('data-content',content);
+          break;
+        case '2':
+            var content = '18 a 21.6 - Excelente';
+            $('#classificacao').attr('data-content',content);
+          break;
+      }
+    }
+
+    if(idade >= 40 && idade <= 49){
+      switch (sexo) {
+        case '1':
+            var content = '18 a 24 - Excelente | Minimo: 18 - Máximo: 26';
+            $('#classificacao').attr('data-content',content);
+          break;
+        case '2':
+            var content = '18 a 21.6 - Excelente';
+            $('#classificacao').attr('data-content',content);
+          break;
+      }
+    }
+
+    if(idade >= 50 && idade <= 59){
+      switch (sexo) {
+        case '1':
+            var content = '18 a 24 - Excelente | Minimo: 18 - Máximo: 26';
+            $('#classificacao').attr('data-content',content);
+          break;
+        case '2':
+            var content = '18 a 21.6 - Excelente';
+            $('#classificacao').attr('data-content',content);
+          break;
+      }
+    }
+
+    if(idade >= 60 && idade <= 69){
+      switch (sexo) {
+        case '1':
+            var content = '18 a 25 - Excelente | Minimo: 18 - Máximo: 26.5';
+            $('#classificacao').attr('data-content',content);
+          break;
+        case '2':
+            var content = '18 a 21,6 - Excelente';
+            $('#classificacao').attr('data-content',content);
+          break;
+      }
+    }
 }

@@ -6,7 +6,7 @@
 		 border-top:3px solid #D2D6DE;
 		 size: 30;
 		 margin-left: 15px;
-		 margin-right: 15px;		
+		 margin-right: 15px;
     }
     .title{
     	padding-top:15x;
@@ -70,7 +70,7 @@
 
 <div class="row">
     <span ><strong class="title">Indice Massa Corporal</strong></span>
-    <hr class="h-divider" >	
+    <hr class="h-divider" >
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('estatura','Estatura (cm):') !!}
@@ -91,14 +91,15 @@
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('class','Classificação:') !!}
+			{!! Form::label('class','Classificação:',['id'=>'classificacao','tabindex'=>'0','data-placement'=>'top','data-toggle'=>'popover','title'=>'Classificação','data-content'=>'','data-trigger'=>'hover']) !!}
 			{!! Form::text('class', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
 </div>
+
 <div class="row">
 	<span ><strong class="title">Fracionamento da Composição Corporal</strong></span>
-    <hr class="h-divider" >	
+    <hr class="h-divider" >
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('gordura','% de Gordura:') !!}
@@ -166,7 +167,7 @@
  </div>
 <div class="row">
     <span ><strong class="title">Testes Fisicos</strong></span>
-    <hr class="h-divider" >	
+    <hr class="h-divider" >
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('taxa_matabolica','Taxa metabóloca basal:') !!}

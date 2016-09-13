@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function(){
 	Route::resource('tests', 'TestController');
+	Route::resource('sheets', 'SheetController');
 });

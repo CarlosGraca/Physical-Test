@@ -8,6 +8,10 @@
 <!-- Select2 -->
 <script src="{{ asset('/plugins/select2/select2.full.min.js')}}"></script>
 
+<script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+
+
 <script>
   var AdminLTEOptions = {
     //Enable sidebar expand on hover effect for sidebar mini
@@ -19,7 +23,10 @@
     //Bootstrap.js tooltip
     enableBSToppltip: true
   };
+   
 </script>
+
+
 
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
@@ -29,3 +36,4 @@
       user experience. Slimscroll is required when using the
       fixed layout. -->
 <script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>

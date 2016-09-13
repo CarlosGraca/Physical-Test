@@ -18,6 +18,8 @@ return [
     'list_test'               => 'List Test',
     'evaluator'               => 'Evaluator (a)',
     'app_name'                => 'Physical Test',
+    'evaluation_sheet'        => 'Handout Training',
+    'new_sheet'               => 'New Handout Training',
     'logged'                  => 'You are logged in!',
     'someproblems'            => 'There were some problems with your input.',
     'siginsession'            => 'Sign in to start your session',

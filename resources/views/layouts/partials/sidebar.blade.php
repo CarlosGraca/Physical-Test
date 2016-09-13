@@ -36,10 +36,9 @@
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li class="treeview">
                 <a href="#"><i class='glyphicon glyphicon-qrcode'></i> <span>{{ trans('adminlte_lang::message.tests') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                   <li><a href="{{ url('tests/create') }}"><span>{{ trans('adminlte_lang::message.new_test') }}</span></a></li>                    
-                     
-                    <li><a href="{{ url('tests') }}">{{ trans('adminlte_lang::message.list_test') }}</a></li>
+                <ul class="treeview-menu">                                     
+                     <li><a href="{{ url('tests') }}">{{ trans('adminlte_lang::message.list_test') }}</a></li>
+                     <li><a href="{{ url('sheets') }}"><span>{{ trans('adminlte_lang::message.evaluation_sheet') }}</span></a></li>  
 
                 </ul>
             </li>     

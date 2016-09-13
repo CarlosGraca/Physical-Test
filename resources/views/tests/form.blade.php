@@ -3,7 +3,7 @@
 		 margin-top:5px;
 		 margin-bottom:5px;
 		 height:1px;
-		 border-top:3px solid #D2D6DE;
+		 border-top:3px solid #3C8DBC;
 		 size: 30;
 		 margin-left: 15px;
 		 margin-right: 15px;		
@@ -11,6 +11,7 @@
     .title{
     	padding-top:15x;
     	margin-left: 15px;
+        text-transform: uppercase;
     }
 </style>
 <div class="row">
@@ -57,15 +58,18 @@
   <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('age','Idade:') !!}
-			{!! Form::text('age', null, ['class'=>'form-control','disabled']) !!}
+			{!! Form::text('age', null,['class'=>'form-control']) !!}
 		</div>
-	</div>
-  <div class="col-lg-3 col-md-4 col-sm-6">
+    </div>
+
+				<div class="col-lg-3 col-md-4 col-sm-6">
+	
     <div class="form-group form-group-sm">
       {!! Form::label('sexo','Sexo:') !!}
       {!! Form::select('sexo', [0=>'Escolha a Opção',1=>'Masculino',2=>'Feminino'],NULL, ['class'=>'form-control']) !!}
     </div>
   </div>
+  
 </div>
 
 <div class="row">
@@ -87,6 +91,12 @@
 		<div class="form-group form-group-sm">
 			{!! Form::label('imc','IMC  kg/m²:') !!}
 			{!! Form::text('imc', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('taxa_matabolica','Taxa metabóloca basal (Calorias/Dia):') !!}
+			{!! Form::text('taxa_matabolica', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
@@ -165,15 +175,37 @@
 	</div>
  </div>
 <div class="row">
-    <span ><strong class="title">Testes Fisicos</strong></span>
-    <hr class="h-divider" >	
+    <span ><strong class="title">Fisico</strong></span>
+    <hr class="h-divider" >	 
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('taxa_matabolica','Taxa metabóloca basal:') !!}
-			{!! Form::text('taxa_matabolica', null, ['class'=>'form-control']) !!}
+			{!! Form::label('forca_abdominal','Força Abdominal (nº rep/1min):') !!}
+			{!! Form::text('forca_abdominal', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('forca_mmii','Força MMII (IVC cm):') !!}
+			{!! Form::text('forca_mmii', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('flexibilidade','Flexibilidade (cm):') !!}
+			{!! Form::text('flexibilidade', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="form-group form-group-sm">
+			{!! Form::label('forca_mmss','Força MMSS (nº de repetições):') !!}
+			{!! Form::text('forca_mmss', null, ['class'=>'form-control']) !!}
+		</div>
+	</div>
+</div>
+<div class="row">
+    <span ><strong class="title">Outros</strong></span>
+    <hr class="h-divider" >	
+    <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('frequesia','Frquência Cardíaca Repouso (bpm):') !!}
 			{!! Form::text('frequesia', null, ['class'=>'form-control']) !!}
@@ -193,32 +225,8 @@
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('pontencia_aerobica','Pontência Aeróbica (ml/Kg/min):') !!}
-			{!! Form::text('pontencia_aerobica', null, ['class'=>'form-control']) !!}
+			{!! Form::label('potencia_aerobica','Potência Aeróbica (ml/Kg/min):') !!}
+			{!! Form::text('potencia_aerobica', null, ['class'=>'form-control']) !!}
 		</div>
-	</div>
-	<div class="col-lg-3 col-md-4 col-sm-6">
-		<div class="form-group form-group-sm">
-			{!! Form::label('forca_abdominal','Força Abdominal (nº rep/1min):') !!}
-			{!! Form::text('forca_abdominal', null, ['class'=>'form-control']) !!}
-		</div>
-	</div>
-	<div class="col-lg-3 col-md-4 col-sm-6">
-		<div class="form-group form-group-sm">
-			{!! Form::label('forca_mmii','Força MMII (IVC cm):') !!}
-			{!! Form::text('forca_mmii', null, ['class'=>'form-control']) !!}
-		</div>
-	</div>
-	<div class="col-lg-3 col-md-4 col-sm-6">
-		<div class="form-group form-group-sm">
-			{!! Form::label('flexibilidade','Flexibilidade (cm):') !!}
-			{!! Form::text('cintura', null, ['class'=>'form-control']) !!}
-		</div>
-	</div>
-	<div class="col-lg-3 col-md-4 col-sm-6">
-		<div class="form-group form-group-sm">
-			{!! Form::label('forca_mms','Força MMSS (nº de repetições):') !!}
-			{!! Form::text('forca_mms', null, ['class'=>'form-control']) !!}
-		</div>
-	</div>
+	</div>	
 </div>

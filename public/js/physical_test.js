@@ -5,11 +5,6 @@ $('document').ready(function(){
     year = today.getFullYear();
     $('#app_date').text(year);
 
-
-  //  date = month+'-'+day+'-'+year;
-  //  $('#dt_test').val(date);
-
-
     $('#dt_nasc').on('change',function(){
     	var dt_test = new Date($('#dt_test').val());
     	var dt_nasc = new Date($('#dt_nasc').val());
@@ -65,6 +60,20 @@ $('document').ready(function(){
         $('#massa_magra').val(mm);
     });
 
+    $('#cintura').on('change',function(){
+        var c = $('#cintura').val();
+        var q = $('#quadril').val();
+        var cq = get_cintura_quatril(c,q);
+        $('#rel_cin_qua').val(cq);
+    });
+
+    $('#quadril').on('change',function(){
+        var c = $('#cintura').val();
+        var q = $('#quadril').val();
+        var cq = get_cintura_quatril(c,q);
+        $('#rel_cin_qua').val(cq);
+    });
+
 });
 
 function get_idade(date_test,date_nasc){
@@ -91,4 +100,16 @@ function get_peso_gordura(gordura,peso){
 function get_massa_magra(peso,pesso_gordura){
     var mm = peso-pesso_gordura;
     return mm;
+}
+
+function get_cintura_quatril(cintura,quatril){
+    var cq;
+    console.log(cintura);
+    console.log(quatril);
+    if (cintura && quatril) {
+        cq = cintura/quatril;
+    } else {
+        cp = 0;
+    }    
+    return cq;
 }

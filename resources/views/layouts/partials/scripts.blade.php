@@ -11,6 +11,7 @@
 <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script>
   var AdminLTEOptions = {
@@ -35,5 +36,8 @@
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
       fixed layout. -->
-<script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.js"></script>
+<script src="{{ asset('/js/loadRemoteContent.js') }}" type="text/javascript"></script><script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/search.js') }}" type="text/javascript"></script>

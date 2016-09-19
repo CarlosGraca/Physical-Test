@@ -14,6 +14,7 @@
 
 
 @section('main-content')
+    @include('layouts.shared.alert')
 	<div class="row">
 	    <div class="col-lg-12 col-xs-6">
 	        <div class="box box-default">
@@ -24,13 +25,11 @@
 	              	    <span>{{ Auth::user()->name }}</span> 
 	                </h3>
 	                <div class="pull-right box-tools">
-	                    <a href="#" data-remote="true" class="btn btn-primary btn-sm" role="button"    data-toggle="tooltip" title="Pdf">
-	                       <i class="fa fa-file-pdf-o"></i>
+	                    <a href="{{ url('sheets') }}" class="btn btn-primary btn-sm" role="button"    data-toggle="tooltip" title="Voltar">
+	                       <i class="fa  fa-arrow-left"></i>
 	                    </a>
-	                    <a href="#" data-remote="true" class="btn btn-primary btn-sm" role="button"    data-toggle="tooltip" title="Email">
-	                       <i class="fa fa-send"></i>
-	                    </a>
-	                    <a href="#" data-remote="true" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save">
+	                    
+	                    <a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-sheet">
 	                       <i class="fa fa-save"></i>
 	                    </a>	                  
 	                </div><!-- /. tools -->

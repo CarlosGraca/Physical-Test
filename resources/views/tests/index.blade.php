@@ -20,7 +20,7 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	              <div class="pull-left box-tools">
-	                  <a href="{{ url('tests/create') }}" data-remote="true" class="btn btn-success btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_test') }}">
+	                  <a href="{{ url('tests/create') }}" class="btn btn-success btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_test') }}">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
 	                  

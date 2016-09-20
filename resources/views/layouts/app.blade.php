@@ -50,6 +50,8 @@ desired effect
 
     @include('layouts.partials.controlsidebar')
 
+    @include('layouts.shared.modal')
+
     @include('layouts.partials.footer')
 
 </div><!-- ./wrapper -->

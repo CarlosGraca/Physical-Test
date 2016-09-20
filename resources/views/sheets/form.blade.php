@@ -1,28 +1,57 @@
+<style type="text/css">
+    * {
+    font-family:Consolas
+}
+
+.tabela-sheet {
+    border:solid 1px;
+    width:100%
+}
+
+.tabela-sheet td {
+    border:solid 1px;
+}
+
+.tabela-sheet .celulaEmEdicao {
+    padding: 0;
+}
+
+.tabela-sheet .celulaEmEdicao input[type=text]{
+    width:100%;
+    border:0;
+    background-color:rgb(255,253,210);  
+}
+</style>
 <div class="row">
+    {!! Form::hidden('client_id', null, ['class'=>'form-control','id'=>'client_id']) !!}
     <div class="col-lg-3 col-md-4 col-sm-6">
-		<div class="form-group form-group-sm">
-			{!! Form::label('name','Name:') !!}
-			{!! Form::text('name', null, ['class'=>'form-control']) !!}
-		</div>
-	</div>
+        <div class="form-group form-group-sm">
+            {!! Form::label('name','Name:') !!}
+            {{ Form::open(['action' => ['SearchController@autocomplete'], 'method' => 'GET']) }}
+                {{ Form::text('name', '', ['id' =>  'name', 'placeholder' =>  'Enter name','class'=>'form-control'])}}
+                
+            {{ Form::close() }}
+        </div>
+    </div>
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('email','Email:') !!}
 			{!! Form::email('email', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
+    
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('kg','Kg:') !!}
-			{!! Form::text('kg', null, ['class'=>'form-control']) !!}
-		</div>
-	</div>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-		<div class="form-group form-group-sm">
-			{!! Form::label('dt_nasc','Data de Nacimento:') !!}
+			{!! Form::label('dt_nasc','Data de Nascimento:') !!}
 			{!! Form::date('dt_nasc',null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="form-group form-group-sm">
+            {!! Form::label('kg','Kg:') !!}
+            {!! Form::text('kg', null, ['class'=>'form-control']) !!}
+        </div>
+    </div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('altura','Altura:') !!}
@@ -31,26 +60,26 @@
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('tipo_treino','Objectivos:') !!}
-			{!! Form::text('tipo_treino', null, ['class'=>'form-control']) !!}
+			{!! Form::label('objective','Objectivos:') !!}
+			{!! Form::text('objective', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>	
 	<div class="col-lg-3 col-md-4 col-sm-6">
 	    <div class="form-group form-group-sm">
-	      {!! Form::label('aluno','Aluno:') !!}
-	      {!! Form::select('aluno', [0=>'Escolha a Opção',1=>'Iniciante',2=>'Intermédio',3=>'Avançado'],NULL, ['class'=>'form-control']) !!}
+	      {!! Form::label('type_student','Aluno:') !!}
+	      {!! Form::select('type_student', [0=>'Escolha a Opção',1=>'Iniciante',2=>'Intermédio',3=>'Avançado'],NULL, ['class'=>'form-control']) !!}
 	    </div>
 	</div>
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('dia_treino','Dias de treino:') !!}
-			{!! Form::text('dia_treino', null, ['class'=>'form-control']) !!}
+			{!! Form::label('training_days','Dias de treino:') !!}
+			{!! Form::text('training_days', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('dt_start','Data Inicio:') !!}
-			{!! Form::date('dt_start', \Carbon\Carbon::now()->subDay(0)->format('Y-m-d'), ['class'=>'form-control']) !!}
+			{!! Form::label('date_start','Data Inicio:') !!}
+			{!! Form::date('date_start', \Carbon\Carbon::now()->subDay(0)->format('Y-m-d'), ['class'=>'form-control']) !!}
 		</div>
 	</div>
 </div>
@@ -81,9 +110,10 @@
     <div class="tab-content">
         <!-- Biceps e Antebraço -->
         <div class="tab-pane active" id="biceps-antebraco">
-            <table class="table table-bordered" id="table-biceps-antebraco">
+            <table class="table table-bordered" class="tabela-sheet" id="table-biceps-antebraco">
                 <thead>
                     <tr>
+                        <th style="display:none;"></th>
                         <th>Ordem</th>
                         <th>Exercicio</th>
                         <th>Séries</th>
@@ -92,40 +122,185 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1.</th>
-                        <th>Biceps máquina</th>
-                        <th>12</th>
-                        <th>3</th>
-                        <th>40</th>
-                    </tr>  
-                    <tr>
-                        <th>1.</th>
-                        <th>Biceps máquina</th>
-                        <th>12</th>
-                        <th>3</th>
-                        <th>40</th>
-                    </tr>  
+                   @foreach ($biceps_antebraco as $element)
+                        <tr>
+                            <td style="display:none;">{{ $element->id}}</td>
+                            <td class="ordem"></td>
+                            <td>{{ $element->name}}</td>
+                            <td class="series"></td>
+                            <td class="repet"></td>
+                            <td class="maq"></td>
+                        </tr>
+                   @endforeach                   
                 </tbody>                                     
             </table>
         </div>
         <!-- Triceps -->
         <div class="tab-pane" id="triceps">
+            <table class="table table-bordered" class="tabela-sheet" id="table-triceps">
+                <thead>
+                    <tr>
+                        <th style="display:none;"></th>
+                        <th>Ordem</th>
+                        <th>Exercicio</th>
+                        <th>Séries</th>
+                        <th>Repet.</th>
+                        <th>Máq.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach ($triceps as $element)
+                        <tr>
+                            <td style="display:none;">{{ $element->id}}</td>
+                            <td class="ordem"></td>
+                            <td>{{ $element->name}}</td>
+                            <td class="series"></td>
+                            <td class="repet"></td>
+                            <td class="maq"></td>
+                        </tr>
+                   @endforeach
+                   
+                </tbody>                                     
+            </table>
         </div>
         <!-- Ombros e Trapésio -->
         <div class="tab-pane" id="ombro-trapesio">
+            <table class="table table-bordered" class="tabela-sheet" id="table-ombro-trapezio">
+                <thead>
+                    <tr>
+                        <th style="display:none;"></th>
+                        <th>Ordem</th>
+                        <th>Exercicio</th>
+                        <th>Séries</th>
+                        <th>Repet.</th>
+                        <th>Máq.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach ($ombro_trapesio as $element)
+                        <tr>
+                            <td style="display:none;">{{ $element->id}}</td>
+                            <td class="ordem"></td>
+                            <td>{{ $element->name}}</td>
+                            <td class="series"></td>
+                            <td class="repet"></td>
+                            <td class="maq"></td>
+                        </tr>
+                   @endforeach
+                   
+                </tbody>                                     
+            </table>
         </div>
         <!-- Ombros e Trapésio -->
         <div class="tab-pane" id="peitoral">
+              <table class="table table-bordered" class="tabela-sheet" id="table-peitoral">
+                <thead>
+                    <tr>
+                        <th style="display:none;"></th>
+                        <th>Ordem</th>
+                        <th>Exercicio</th>
+                        <th>Séries</th>
+                        <th>Repet.</th>
+                        <th>Máq.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach ($peitoral as $element)
+                        <tr>
+                            <td style="display:none;">{{ $element->id}}</td>
+                            <td class="ordem"></td>
+                            <td>{{ $element->name}}</td>
+                            <td class="series"></td>
+                            <td class="repet"></td>
+                            <td class="maq"></td>
+                        </tr>
+                   @endforeach
+                   
+                </tbody>                                     
+            </table>
         </div>
         <!-- Costas -->
         <div class="tab-pane" id="costas">
+            <table class="table table-bordered" class="tabela-sheet" id="table-costas">
+                <thead>
+                    <tr>
+                        <th style="display:none;"></th>
+                        <th >Ordem</th>
+                        <th>Exercicio</th>
+                        <th>Séries</th>
+                        <th>Repet.</th>
+                        <th>Máq.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach ($costas as $element)
+                        <tr>
+                            <td style="display:none;">{{ $element->id}}</td>
+                            <td class="ordem"></td>
+                            <td>{{ $element->name}}</td>
+                            <td class="series"></td>
+                            <td class="repet"></td>
+                            <td class="maq"></td>
+                        </tr>
+                   @endforeach                   
+                </tbody>                                     
+            </table>
         </div>
         <!-- Quadril, Coxa e Perna -->
         <div class="tab-pane" id="quadril-perna-coxa">
+            <table class="table table-bordered" class="tabela-sheet" id="table-quadril-perna-coxa">
+                <thead>
+                    <tr>
+                        <th style="display:none;"></th>
+                        <th>Ordem</th>
+                        <th>Exercicio</th>
+                        <th>Séries</th>
+                        <th>Repet.</th>
+                        <th>Máq.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach ($quadril_perna_coxa as $element)
+                        <tr>
+                            <td style="display:none;">{{ $element->id}}</td>
+                            <td class="ordem"></td>
+                            <td>{{ $element->name}}</td>
+                            <td class="series"></td>
+                            <td class="repet"></td>
+                            <td class="maq"></td>
+                        </tr>
+                   @endforeach
+                   
+                </tbody>                                     
+            </table>
         </div>
         <!-- Abdmem -->
         <div class="tab-pane" id="abdmen">
+              <table class="table table-bordered" class="tabela-sheet" id="table-abdomen">
+                <thead>
+                    <tr>
+                        <th style="display:none;"></th>
+                        <th>Ordem</th>
+                        <th>Exercicio</th>
+                        <th>Séries</th>
+                        <th>Repet.</th>
+                        <th>Máq.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach ($abdmen as $element)
+                        <tr>
+                            <td style="display:none;">{{ $element->id}}</td>
+                            <td class="ordem"></td>
+                            <td>{{ $element->name}}</td>
+                            <td class="series"></td>
+                            <td class="repet"></td>
+                            <td class="maq"></td>
+                        </tr>
+                   @endforeach
+                   
+                </tbody>                                     
+            </table>
         </div>
     </div>
 </div>

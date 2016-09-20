@@ -18,4 +18,13 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function(){
 	Route::resource('tests', 'TestController');
 	Route::resource('sheets', 'SheetController');
+	Route::resource('sheet_details', 'SheetDetailController');
+	Route::resource('clients','ClientController');
 });
+
+
+//Route
+Route::get('search/autocomplete', 'SearchController@autocomplete');
+
+Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
+

@@ -1,4 +1,6 @@
 $('document').ready(function(){
+    $('#table-tests').DataTable();
+
     today = new Date();
     day = today.getDate();
     month = today.getMonth()+1;
@@ -119,14 +121,10 @@ $(function () {
   $('[data-toggle="popover"]').popover()
 });
 
-
-
-//CRIAR POPOVER DE CLASSIFICAÇÃO CONSOANTE A IDADE DE SEXO
-$(document).on('change','#sexo',function() {
-  sexo = $(this).val();
-  idade = $('#age').val();
-  if(idade == ""){
-    alert('Insira a sua data de nascimento');
+function changeSexo(sexo,idade){
+  if(idade == "" || idade =='NaN'){
+    toastr.error('Insira a sua data de nascimento',{timeOut: 5000} ).css("width","500px");
+    $(this).val('0');
     return false;
   }
 
@@ -136,7 +134,13 @@ $(document).on('change','#sexo',function() {
 
   popoverClassificacao(idade,sexo);
   showAndHiddenFields(idade,sexo);
+}
 
+//CRIAR POPOVER DE CLASSIFICAÇÃO CONSOANTE A IDADE DE SEXO
+$(document).on('change','#sexo',function() {
+  sexo = $(this).val();
+  idade = $('#age').val();
+  changeSexo(sexo, idade);
 });
 
 function showAndHiddenFields(idade, sexo){
@@ -519,4 +523,112 @@ function popoverClassificacao(idade, sexo) {
           break;
       }
     }
+}
+
+//SAVE TEST
+$('#add-test').on('click',function(){
+    var type = "POST";
+    var my_url_cli = "/clients";
+    var dataCli;
+  //  var table =[];
+    var token = $('meta[name="csrf_token"]').attr('content');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': token
+        }
+    });
+
+    var formDataCli = {
+        name : $('#name').val(),
+        email : $('#email').val(),
+        dt_nasc : $('#dt_nasc').val(),
+        sexo: $('#sexo').val(),
+        telefone: $('#telefone').val(),
+        telemovel: $('#telemovel').val(),
+    }
+    var client_id = $('#client_id').val();
+    if (client_id === '') {
+        $.ajax({
+            type: type,
+            url: my_url_cli,
+            data: formDataCli,
+            dataType: 'json',
+            success: function (data ) {
+                console.log(data);
+              //  var successHtml = 'User saved with success';
+              //  toastr.success(successHtml,{timeOut: 5000} ).css("width","300px");
+               save_test(data.id,type);
+            },
+            error: function (data) {
+                console.log('Error:', data);
+                if( data.status === 422 ) {
+                    $errors = data.responseJSON;
+                    var errorsHtml= '';
+                    $.each( $errors, function( key, value ) {
+                        errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
+                    });
+                    toastr.error(errorsHtml,{timeOut: 5000} ).css("width","500px");
+                }
+            }
+        });
+    }else{
+      save_test(client_id,type);
+    }
+
+});
+
+function save_test(client_id,type){
+    var my_url = "/tests";
+    var formDataTest = {
+        client_id : client_id,
+        estatura : $('#estatura').val(),
+        peso : $('#peso').val(),
+        dc_tricepts: ( $('#dc_tricepts').val() == '' ? 0 : $('#dc_tricepts').val() ),
+        soma_dc_triceps_subescapular: ( $('#soma_dc_triceps_subescapular').val() == '' ? 0 : $('#soma_dc_triceps_subescapular').val() ),
+        soma5_dc: ( $('#soma5_dc').val() == '' ? 0 : $('#soma5_dc').val() ),
+        circunferencia: $('#circunferencia').val(),
+        cintura: $('#cintura').val(),
+        quadril: $('#quadril').val(),
+        coxa: $('#coxa').val(),
+        panturrilha: $('#panturrilha').val(),
+        gordura: $('#gordura').val(),
+        peso_corporal_total: ( $('#peso_corporal_total').val() == '' ? 0 : $('#peso_corporal_total').val() ),
+        peso_a_perder: ( $('#peso_a_perder').val() == '' ? 0 : $('#peso_a_perder').val() ),
+        total_agua_corpo: ( $('#total_agua_corpo').val() == '' ? 0 : $('#total_agua_corpo').val() ),
+        perc_agua_massa_magra: ( $('#perc_agua_massa_magra').val() == '' ? 0 : $('#perc_agua_massa_magra').val() ),
+        taxa_metabolica: $('#taxa_metabolica').val(),
+        forca_abdominal: $('#forca_abdominal').val(),
+        forca_mmii: $('#forca_mmii').val(),
+        flexibilidade: $('#flexibilidade').val(),
+        forca_mmss: $('#forca_mmss').val(),
+        frequencia_card_rep: $('#frequencia_card_rep').val(),
+        pressao_sis: $('#pressao_sis').val(),
+        pressao_dis: $('#pressao_dis').val(),
+        potencia_aerobica: $('#potencia_aerobica').val(),
+        dt_test: $('#dt_test').val(),
+    }
+
+    $.ajax({
+        type: type,
+        url: my_url,
+        data: formDataTest,
+        dataType: 'json',
+        success: function (data) {
+          console.log(data);
+          var successHtml = 'Test saved with success';
+          toastr.success(successHtml,{timeOut: 5000} ).css("width","300px");
+          $('#add-test').css('display','none');
+        },
+        error: function (data) {
+            console.log('Error:', data);
+            if( data.status === 422 ) {
+                $errors = data.responseJSON;
+                var errorsHtml= '';
+                $.each( $errors, function( key, value ) {
+                    errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
+                });
+                toastr.error(errorsHtml,{timeOut: 5000} ).css("width","500px");
+            }
+        }
+    });
 }

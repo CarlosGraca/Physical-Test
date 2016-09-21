@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
-use App\Http\Requests;
+//use App\Http\Requests;
+use Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\TestRequest;
+use App\Test;
 
 class TestController extends Controller
 {
@@ -15,7 +19,13 @@ class TestController extends Controller
      */
     public function index()
     {
-        return view('tests.index');
+
+        $tests = Test::all();
+        if (Request::wantsJSON()){
+           return $tests;
+        }else{
+            return view('tests.index',compact('tests'));
+        }
     }
 
     /**
@@ -34,9 +44,16 @@ class TestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TestRequest $request)
     {
-        //
+        $test = Test::create($request->all());
+        //\Session::flash('flash_message','Test successfully added.'); //<--FLASH MESSAGE
+
+        if (Request::wantsJson()){
+            return $test;
+        }else{
+             return view('tests.create');
+        }
     }
 
     /**
@@ -47,7 +64,11 @@ class TestController extends Controller
      */
     public function show($id)
     {
-        //
+      if (Request::wantsJson()){
+          return $tests;
+      }else{
+        //  return view('clients.show',compact('client'));
+      }
     }
 
     /**

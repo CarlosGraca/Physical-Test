@@ -15,6 +15,7 @@
     }
 </style>
 <div class="row">
+	{!! Form::hidden('client_id', null, ['class'=>'form-control','id'=>'client_id']) !!}
     <span ><strong class="title">Dados Pessoais</strong></span>
     <hr class="h-divider" >
     <div class="col-lg-3 col-md-4 col-sm-6">

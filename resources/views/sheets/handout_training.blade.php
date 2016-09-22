@@ -1,6 +1,7 @@
-
 @extends('layouts.report')
+
 @section('main-content')
+
 <!-- Main content -->
     <section class="invoice">
        <!-- this row will not appear when printing -->
@@ -14,33 +15,34 @@
 	        <div class="col-xs-12">
 	          <h2 class="page-header">
 	            <img src="/img/logo.png" width="150" alt="" > 
-	            <small class="pull-right"><strong>Ficha de Treino</strong></small>
+	            <small class="pull-right"><strong style="text-align: center;">Ficha de Treino</strong></small>
 	          </h2>
             </div><!-- /.col -->
         </div>
         <!-- info row -->
         <div class="row invoice-info">
+           
 	        <div class="col-sm-4 invoice-col">
 	          <address>
-	            <b>Nome:</b><br>
-	            <b>Data de nacimento:</b><br>
+	            <b>Nome: </b>{{$clients[0]->name}}<br>
+	            <b>Data de nacimento: </b>{{$clients[0]->dt_nasc}}<br>
 	          </address>
 	        </div><!-- /.col -->
 	        <div class="col-sm-4 invoice-col">
 	          <address>
-	            <b>Aluno:</b><br>
-	            <b>Objetivos:</b><br>
+	            <b>Aluno: </b>{{$clients[0]->type_student}}<br>
+	            <b>Objetivos: </b>{{$clients[0]->objective}}<br>
 	          </address>
 	        </div><!-- /.col -->
 	        <div class="col-sm-4 invoice-col">
-	          <b>Dias de treino:</b><br>
-	          <b>Data de Inicio:</b><br>
+	          <b>Dias de treino: </b>{{$clients[0]->training_days}}<br>
+	          <b>Data de Inicio: </b>{{$clients[0]->date_start}}<br>
 	        </div><!-- /.col -->
         </div><!-- /.row -->
 	   <!-- Table row -->
         <div class="row">
             <div class="col-xs-12 table-responsive">
-                <table class="table table-bordered" class="tabela-sheet" id="table-biceps-antebraco">
+                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-biceps-antebraco">
 	                <thead>
 	                    <tr>		                        
 	                        <th class="col-md-1">Ordem</th>

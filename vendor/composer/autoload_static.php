@@ -288,9 +288,10 @@ class ComposerStaticInit32221c7d830bed4f58f877ac241bf0b7
     );
 
     public static $classMap = array (
+        'AddVotesToTestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_141247_add_votes_to_tests_table.php',
         'CreateClientsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_15_200515_create_clients_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-        'CreateSheetDetailsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_15_235519_create_sheet_details_table.php',
+        'CreateSheetDetailsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_13_235519_create_sheet_details_table.php',
         'CreateSheetsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_14_115913_create_sheets_table.php',
         'CreateTableExercises' => __DIR__ . '/../..' . '/database/migrations/2016_09_15_185840_create_table_exercises.php',
         'CreateTestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_12_132643_create_tests_table.php',

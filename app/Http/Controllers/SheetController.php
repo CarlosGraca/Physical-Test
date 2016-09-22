@@ -127,8 +127,7 @@ class SheetController extends Controller
                  ->select('objective','type_student','training_days','date_start','clients.name','email','dt_nasc')
                  ->where('sheets.id',$id)
                  ->join('clients','sheets.client_id','=','clients.id')
-                 ->get();
-                 
+                 ->TAKE(1)->get();
         $biceps_antebraco = DB::table('exercises')                          
                            ->leftjoin('sheet_details', function($join) use ($id)
                             {

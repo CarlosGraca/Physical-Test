@@ -51,9 +51,9 @@
     <![endif]-->
 
     <style type="text/css">
-        #toast-container{
-            
-        }
-    </style>
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+        padding: 1px 1px 1px 8px;
+    }
+</style>
 
 </head>

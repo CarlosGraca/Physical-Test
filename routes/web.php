@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/logout', 'Auth\LoginController@logout');
+
 Route::group(['middleware' => ['web']], function(){
 	Route::resource('tests', 'TestController');
 	Route::resource('sheets', 'SheetController');
@@ -27,4 +29,3 @@ Route::group(['middleware' => ['web']], function(){
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 
 Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
-

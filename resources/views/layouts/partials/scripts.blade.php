@@ -37,7 +37,7 @@
       user experience. Slimscroll is required when using the
       fixed layout. -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.js"></script>
+<script type="text/javascript" src="{{ asset('/plugins/rails/rails.js')}}"></script>
 <script src="{{ asset('/js/loadRemoteContent.js') }}" type="text/javascript"></script><script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/search.js') }}" type="text/javascript"></script>

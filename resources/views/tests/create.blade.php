@@ -22,13 +22,13 @@
 	              	 <strong>{{ trans('adminlte_lang::message.evaluator') }}: </strong><span>{{ Auth::user()->name }}</span> 
 	              </h3>
 	              <div class="pull-right box-tools">
-	                   <a href="#" data-remote="true" class="btn btn-primary btn-sm" role="button"    data-toggle="tooltip" title="Pdf">
+	                   <a href="#" class="btn btn-primary btn-sm" role="button"    data-toggle="tooltip" title="Pdf">
 	                       <i class="fa fa-file-pdf-o"></i>
 	                    </a>
-	                   <a href="#" data-remote="true" class="btn btn-primary btn-sm" role="button"    data-toggle="tooltip" title="Email">
+	                   <a href="#"  class="btn btn-primary btn-sm" role="button"    data-toggle="tooltip" title="Email">
 	                       <i class="fa fa-send"></i>
 	                    </a>
-	                    <a href="#" data-remote="true" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save">
+	                    <a href="#"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save">
 	                       <i class="fa fa-save"></i>
 	                     </a>	                  
 	              </div><!-- /. tools -->

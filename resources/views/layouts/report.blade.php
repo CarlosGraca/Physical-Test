@@ -14,15 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container">
             <!-- Portfolio Item Heading -->
 
-            <div class="row">                
-                <div class="col-lg-3 col-xs-3">                    
-                      <img src="/img/logo.png" width="150" alt="" style="margin-left:10px;">                
-                </div>
-                <div class="col-lg-3 col-xs-2"></div>
-                <div class="col-lg-6 col-xs-6">
-                    <h3> <strong>Ficha de Treino</strong></h3>
-                </div>                    
-            </div>
+            
             <!-- /.row -->
             <!-- Your Page Content Here -->
             @yield('main-content')

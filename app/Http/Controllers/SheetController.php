@@ -123,6 +123,12 @@ class SheetController extends Controller
      */
     public function handout_training($id)
     {
+        $clients = DB::table('sheets')
+                 ->select('objective','type_student','training_days','date_start','clients.name','email','dt_nasc')
+                 ->where('sheets.id',$id)
+                 ->join('clients','sheets.client_id','=','clients.id')
+                 ->get();
+                 
         $biceps_antebraco = DB::table('exercises')                          
                            ->leftjoin('sheet_details', function($join) use ($id)
                             {
@@ -140,6 +146,33 @@ class SheetController extends Controller
                             })
                            ->select('exercises.id','exercises.name','sheet_details.ordem','sheet_details.serie','sheet_details.repet','sheet_details.map')
                            ->where('type','triceps')  
+                          ->get();
+        $ombro_trapezio = DB::table('exercises')                          
+                           ->leftjoin('sheet_details', function($join) use ($id)
+                            {
+                                $join->on('exercises.id', '=', 'sheet_details.exercise_id')
+                                     ->where('sheet_details.sheet_id', '=', $id);
+                            })
+                           ->select('exercises.id','exercises.name','sheet_details.ordem','sheet_details.serie','sheet_details.repet','sheet_details.map')
+                           ->where('type','ombro-trapesio')  
+                          ->get();
+        $costas = DB::table('exercises')                          
+                           ->leftjoin('sheet_details', function($join) use ($id)
+                            {
+                                $join->on('exercises.id', '=', 'sheet_details.exercise_id')
+                                     ->where('sheet_details.sheet_id', '=', $id);
+                            })
+                           ->select('exercises.id','exercises.name','sheet_details.ordem','sheet_details.serie','sheet_details.repet','sheet_details.map')
+                           ->where('type','costas')  
+                          ->get();
+        $peitoral = DB::table('exercises')                          
+                           ->leftjoin('sheet_details', function($join) use ($id)
+                            {
+                                $join->on('exercises.id', '=', 'sheet_details.exercise_id')
+                                     ->where('sheet_details.sheet_id', '=', $id);
+                            })
+                           ->select('exercises.id','exercises.name','sheet_details.ordem','sheet_details.serie','sheet_details.repet','sheet_details.map')
+                           ->where('type','peitoral')  
                           ->get();
         $quadril_perna_coxa = DB::table('exercises')                          
                            ->leftjoin('sheet_details', function($join) use ($id)
@@ -159,7 +192,7 @@ class SheetController extends Controller
                            ->select('exercises.id','exercises.name','sheet_details.ordem','sheet_details.serie','sheet_details.repet','sheet_details.map')
                            ->where('type','abdmen')  
                           ->get();   
-        return view('sheets.handout_training', compact('biceps_antebraco','triceps','quadril_perna_coxa','abdomen'));
+        return view('sheets.handout_training', compact('biceps_antebraco','triceps','quadril_perna_coxa','abdomen','costas','peitoral','ombro_trapezio','clients'));
     }
 
     /**

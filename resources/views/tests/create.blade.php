@@ -22,6 +22,7 @@
 	              <h3 class="box-title">
 	              	 <strong>{{ trans('adminlte_lang::message.evaluator') }}: </strong><span>{{ Auth::user()->name }}</span>
 	              </h3>
+<<<<<<< HEAD
 	              <div class="pull-right box-tools">
 	                   <a href="#" class="btn btn-primary btn-sm" role="button"    data-toggle="tooltip" title="Pdf">
 	                       <i class="fa fa-file-pdf-o"></i>
@@ -33,6 +34,8 @@
 	                       <i class="fa fa-save"></i>
 	                     </a>	                  
 	              </div><!-- /. tools -->
+=======
+>>>>>>> 44f85546d6a2fe157dddfa22600f39b9898666a6
 								<div class="pull-right box-tools">
 										<a href="{{ url('tests') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 											 <i class="fa  fa-arrow-left"></i>

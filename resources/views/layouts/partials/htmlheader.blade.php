@@ -17,7 +17,7 @@
 
     <!--<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />-->
 
-   
+
 
     <!-- Select2 -->
     <link rel="stylesheet" href="{{asset('/plugins/select2/select2.min.css')}}">
@@ -25,8 +25,8 @@
     <!-- Theme style -->
     <link href="{{ asset('/css/AdminLTE.css') }}" rel="stylesheet" type="text/css" />
 
-    
-    
+
+
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
@@ -35,10 +35,10 @@
     <!-- iCheck -->
     <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> 
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" type="text/css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" type="text/css" />
 
     <link href="{{ asset('/css/search.css') }}" rel="stylesheet" type="text/css" />
 
@@ -51,7 +51,7 @@
     <![endif]-->
 
     <style type="text/css">
-    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+    .tabela > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
         padding: 1px 1px 1px 8px;
     }
 </style>

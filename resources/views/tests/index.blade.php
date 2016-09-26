@@ -53,7 +53,7 @@
 															</button>
 															<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
 																</a>
-															<a href="{{ url('pdf/handout/') }}/{{$test->id}}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" data-remote='true'])>   <i class="fa fa-file-pdf-o"></i>
+															<a href="{{ url('pdf/tests/') }}/{{$test->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
 																	</a>
 															<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
 																	</a>

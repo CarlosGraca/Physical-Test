@@ -29,3 +29,5 @@ Route::group(['middleware' => ['web']], function(){
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 
 Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
+Route::get('/pdf/tests/{id}', 'TestController@test_report');
+Route::get('/pdf/tests/sendMail/{id}', 'TestController@sendMail');

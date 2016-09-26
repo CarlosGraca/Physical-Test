@@ -124,7 +124,7 @@ $(function () {
 function changeSexo(sexo,idade){
   if(idade == "" || idade =='NaN'){
     toastr.error('Insira a sua data de nascimento',{timeOut: 5000} ).css("width","500px");
-    $(this).val('0');
+    $('#sexo').val('0');
     return false;
   }
 
@@ -618,6 +618,7 @@ function save_test(client_id,type){
           var successHtml = 'Test saved with success';
           toastr.success(successHtml,{timeOut: 5000} ).css("width","300px");
           $('#add-test').css('display','none');
+          window.location = '/tests';
         },
         error: function (data) {
             console.log('Error:', data);

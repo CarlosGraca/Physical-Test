@@ -48,7 +48,7 @@
 													<td>{{$test->client->telemovel }}/{{$test->client->telefone }}</td>
 													<td>{{ $test->dt_test }}</td>
 													<td>
-															<button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete"data-product_id="{{ $test->id }}" data-product_name="{{ $test->id }}">
+															<button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete" data-product_id="{{ $test->id }}" data-product_name="{{ $test->id }}">
 																<i class="fa fa-trash"></i>
 															</button>
 															<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>

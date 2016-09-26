@@ -20,7 +20,7 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	              <div class="pull-left box-tools">
-	                  <a href="{{ url('sheets/create') }}"  class="btn btn-success btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_sheet') }}">
+	                  <a href="{{ url('sheets/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_sheet') }}">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
 	                  

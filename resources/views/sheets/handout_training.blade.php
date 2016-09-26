@@ -1,13 +1,20 @@
+
+
 @extends('layouts.report')
 
 @section('main-content')
-
+<style type="text/css">
+        .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+            padding: 1px 1px 1px 8px;
+        }
+    </style>
 <!-- Main content -->
     <section class="invoice">
        <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right"><i class="fa fa-print"></i> Print</a>              
+                <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right"><i class="fa fa-print"></i> Print</a>
+                <a href="{{ url('pdf') }}/1" id="download-page"  style="margin-right: 5px;" class="btn btn-default pull-right"><i class="fa fa-cloud-download"></i> Download</a>             
             </div>
         </div>
         <!-- title row -->

@@ -29,8 +29,10 @@ Route::group(['middleware' => ['web']], function(){
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 
 Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
-Route::get('/pdf/tests/{id}', 'TestController@test_report');
-Route::get('/pdf/tests/sendMail/{id}', 'TestController@sendMail');
+Route::get('/tests/pdf/{id}', 'TestController@test_report');
+Route::get('/tests/pdf/sendMail/{id}', 'TestController@sendMail');
+Route::get('tests/pdf/download/{id}', 'TestController@downloadPDF');
+Route::post('tests/pdf/downloadhtml', 'TestController@downloadHTMLtoPDF');
 
 Route::get('pdf/{id}', function($id){
    $pdf = PDF::loadView('sheets.handout_training',['id'=>$id]);

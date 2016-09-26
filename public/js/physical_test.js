@@ -1504,3 +1504,47 @@ $(function() {
   console.log('age: '+age+' - sex: '+sex);
   popoverClassificacao(age,sex);
 });
+
+/*
+
+$('#download-page').click(function(){
+ var doc = new jsPDF();
+  var html = document.documentElement.innerHTML;
+
+  var specialElementHandlers = {
+	'.report': function(element, renderer){
+		return true;
+	}
+};
+
+  // All units are in the set measurement for the document
+  // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
+  /*doc.fromHTML($('.report').get(0), 15, 15, {
+  	'width': 170,
+  	'elementHandlers': specialElementHandlers
+  });
+
+  //doc.save('sample-file.pdf');
+//  alert('clicked');
+  var url = '/pdf/tests/downloadhtml';
+//  var id = $('#id').text();
+  var html = document.documentElement.innerHTML;
+
+    var token = $('meta[name="csrf_token"]').attr('content');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': token
+        }
+    });
+
+  //console.log(html);
+  $.ajax({
+    url: url,
+    type: 'POST',
+    data: {html: html},
+    success: function(data) {
+
+    }
+  });
+  return false;
+});*/

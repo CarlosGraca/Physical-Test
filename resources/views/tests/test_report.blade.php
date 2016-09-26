@@ -1,23 +1,28 @@
 @extends('layouts.report')
 
+@section('htmlheader_title')
+	Avaliação da Apetidão Física de {{$clients[0]->name}}
+@endsection
+
 @section('main-content')
 
 <!-- Main content -->
     <section class="invoice">
        <!-- this row will not appear when printing -->
-        <div class="row no-print">
+        <div class="row no-print" style="{{$show == true ? ' ':'display: none'}}">
             <div class="col-xs-12">
+                <span style="display: none;" id='id'>{{$test['id']}}</span>
                 <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>
                 <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
-                <a href="#" id="download-page" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
-                <a href="/pdf/tests/sendMail/{{$test['id']}}" id="email-page" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
+                <a href="/tests/pdf/download/{{$test['id']}}" id="download-page" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
+                <a href="/tests/pdf/sendMail/{{$test['id']}}" id="email-page" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
             </div>
         </div>
         <!-- title row -->
 	    <div class="row">
 	        <div class="col-xs-12">
 	          <h2 class="page-header">
-	            <img src="/img/logo.png" width="150" alt="COMPANY LOGO" >
+	            <img src="{{asset('/img/logo.png')}}" width="150" alt="" >
 	            <small class="pull-right"><strong style="text-align: center;">Avaliação da Apetidão Física</strong></small>
 	          </h2>
             </div><!-- /.col -->

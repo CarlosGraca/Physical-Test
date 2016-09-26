@@ -42,3 +42,6 @@
 <script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/search.js') }}" type="text/javascript"></script>
+
+<!-- Scripts in development mode -->
+<script type="text/javascript" src="{{ asset('js/jspdf.min.js') }}"></script>

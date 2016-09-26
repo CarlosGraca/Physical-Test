@@ -216,4 +216,9 @@ class SheetController extends Controller
     {
         //
     }
+
+    public function download($d)
+    {
+      # code...
+    }
 }

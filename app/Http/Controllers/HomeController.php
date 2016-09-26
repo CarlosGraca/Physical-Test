@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class HomeController
@@ -33,6 +34,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $total_tests = DB::table('tests')
+                ->count();
+
+        $total_sheets = DB::table('sheets')
+                ->count();
+        return view('home',compact('total_sheets','total_tests'));
     }
 }

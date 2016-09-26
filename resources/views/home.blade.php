@@ -17,17 +17,37 @@
 	<div class="row">
 	    <div class="col-lg-12 col-xs-6">
 	        <div class="box box-default">
-	            <div class="box-header with-border">
-	              <h3 class="box-title"></h3>
-	              <div class="pull-left box-tools">
-	                  <!--<a href="" data-remote="true" class="btn btn-success btn-sm" role="button" data-toggle="tooltip" title="Adicionar">
-	                       <i class="fa fa-plus"></i>
-	                  </a>-->
-	                  
-	              </div><!-- /. tools -->
-	            </div><!-- /.box-header -->
+	            
 	  
 	            <div class="box-body">
+	                  <!-- Small boxes (Stat box) -->
+		          <div class="row">
+		            <div class="col-lg-3 col-xs-6">
+		              <!-- small box -->
+		              <div class="small-box bg-aqua">
+		                <div class="inner">
+		                  <h3>{{$total_tests}}</h3>
+		                  <p>Avalição Fisica</p>
+		                </div>
+		                <div class="icon">
+		                  <i class="ion ion-medkit"></i>
+		                </div>
+		                <a href="{{ url('tests') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		              </div>
+		            </div><!-- ./col -->
+		            <div class="col-lg-3 col-xs-6">
+		              <!-- small box -->
+		              <div class="small-box bg-green">
+		                <div class="inner">
+		                  <h3>{{$total_sheets}}</h3>
+		                  <p>Ficha de Treino</p>
+		                </div>
+		                <div class="icon">
+		                  <i class="ion ion-stats-bars"></i>
+		                </div>
+		                <a href="{{ url('sheets') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		              </div>
+		            </div><!-- ./col -->
 	            </div>
 	        </div>
 	    </div>

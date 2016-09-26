@@ -29,5 +29,14 @@ Route::group(['middleware' => ['web']], function(){
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 
 Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
+<<<<<<< HEAD
 Route::get('/pdf/tests/{id}', 'TestController@test_report');
 Route::get('/pdf/tests/sendMail/{id}', 'TestController@sendMail');
+=======
+
+
+Route::get('pdf/{id}', function($id){
+   $pdf = PDF::loadView('sheets.handout_training',['id'=>$id]);
+   return $pdf->download('final_test.pdf');
+});
+>>>>>>> origin/master

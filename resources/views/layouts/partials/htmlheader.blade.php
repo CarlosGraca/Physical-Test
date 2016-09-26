@@ -50,14 +50,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<<<<<<< HEAD
     <style type="text/css">
-    .tabela > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
-        padding: 1px 1px 1px 8px;
-    }
-</style>
-=======
-    
->>>>>>> origin/master
+      .tabela > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+          padding: 1px 1px 1px 8px;
+      }
+    </style>
 
 </head>

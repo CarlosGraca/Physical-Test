@@ -16,8 +16,8 @@
 @section('main-content')
 	<div class="row">
 	    <div class="col-lg-12 col-xs-6">
-	        <div class="box box-default">	            
-	  
+	        <div class="box box-solid">
+
 	            <div class="box-body">
 	                <div class="nav-tabs-custom">
 					    <ul class="nav nav-tabs">
@@ -33,7 +33,7 @@
 					        <div class="tab-pane active" id="profile">
 					            <div class="row">
 					        		<div class="col-lg-3 text-center">
-					        			
+
 							            <img  src="/uploads/{{Auth::user()->avatar}}" class="img-circle" alt="Cinque Terre" width="150" height="150">
 
 							            <div style="margin-top: 10px">
@@ -41,14 +41,14 @@
 								                 <div class="col-xs-4 " style="margin-right: 10px;">
 									                 {{Form::submit('Save',['class' =>  'btn btn-primary'])}}
 									            </div>
-								           		 <div class="col-xs-4 ">												
+								           		 <div class="col-xs-4 ">
 												    <div class="form-group">
-									                    {{ Form::file('avatar', '', ['class' =>  'filestyle', 'data-input'=>'false', 'data-buttonText'=>'Select Image'])}}								                   
+									                    {{ Form::file('avatar', '', ['class' =>  'filestyle', 'data-input'=>'false', 'data-buttonText'=>'Select Image'])}}
 									                </div>
 									            </div>
-									            								            
-									        {{ Form::close() }}	
-								        </div>	                                
+
+									        {{ Form::close() }}
+								        </div>
 					        		</div>
 					        		<div class="col-lg-9">
 					        			<ul class="list-group list-group-unbordered">
@@ -102,5 +102,3 @@
 	    </div>
 	</div>
 @endsection
-
-

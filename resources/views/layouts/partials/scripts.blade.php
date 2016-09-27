@@ -9,7 +9,19 @@
 <script src="{{ asset('/plugins/select2/select2.full.min.js')}}"></script>
 
 <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+<!-- DATE RANGE PICKER PLUGIN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="{{ asset('/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+<!-- DATE PICKER -->
+<script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+
+<!-- CHART GRAPHICS -->
+<script src="{{ asset('/plugins/chartjs/Chart.min.js') }}"></script>
+
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -42,11 +54,13 @@
 <script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/search.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/dashboard_graphic.js') }}" type="text/javascript"></script>
+
 
 <!-- Scripts in development mode -->
 <script type="text/javascript" src="{{ asset('js/jspdf.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.min.js') }}"></script>
 
 <script type="text/javascript">
-    $(":file").filestyle({input: false, icon: false, buttonName: "btn-primary",buttonText: "Select Image"}); 
+    $(":file").filestyle({input: false, icon: false, buttonName: "btn-primary",buttonText: "Select Image"});
 </script>

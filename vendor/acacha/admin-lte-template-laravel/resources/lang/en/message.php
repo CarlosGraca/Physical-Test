@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'lock'                    => 'Lock',
     'settings'                => 'Settings',
     'tests'                   => 'Tests',
     'new_test'                => 'New Test',
@@ -89,7 +90,7 @@ return [
     'followers'               => 'Followers',
     'sales'                   => 'Sales',
     'friends'                 => 'Friends',
-    'profile'                 => 'Profile',
+    'profile'                 => 'My Profile',
     'signout'                 => 'Sign out',
     'landingdescription'      => 'Laravel 5 package that switchs default Laravel scaffolding/boilerplate to AdminLTE template with Bootstrap 3.0 and Pratt Landing page',
     'landingdescriptionpratt' => 'Acacha AdminLTE Laravel package template Landing page - Using Pratt',

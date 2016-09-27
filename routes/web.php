@@ -22,6 +22,8 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('sheets', 'SheetController');
 	Route::resource('sheet_details', 'SheetDetailController');
 	Route::resource('clients','ClientController');
+	Route::resource('auth/profile', 'Auth\ProfileController');
+
 });
 
 
@@ -32,9 +34,11 @@ Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
 Route::get('/tests/pdf/{id}', 'TestController@test_report');
 Route::get('/tests/pdf/sendMail/{id}', 'TestController@sendMail');
 Route::get('tests/pdf/download/{id}', 'TestController@downloadPDF');
+
 Route::post('tests/pdf/downloadhtml', 'TestController@downloadHTMLtoPDF');
 
-Route::get('pdf/{id}', function($id){
-   $pdf = PDF::loadView('sheets.handout_training',['id'=>$id]);
-   return $pdf->download('final_test.pdf');
-});
+
+
+// usage inside a laravel route
+Route::post('upload','Auth\ProfileController@upadte_avatar');
+

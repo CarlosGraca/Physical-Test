@@ -45,3 +45,8 @@
 
 <!-- Scripts in development mode -->
 <script type="text/javascript" src="{{ asset('js/jspdf.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(":file").filestyle({input: false, icon: false, buttonName: "btn-primary",buttonText: "Select Image"}); 
+</script>

@@ -70,6 +70,9 @@
 							<canvas id="barChart" style="height:230px"></canvas>
 						</div>
 					</div>
+					<div class="box-footer">
+						<span class="range-date"></span>
+					</div>
 					<!-- /.box-body -->
 				</div>
 				<!-- /.box -->

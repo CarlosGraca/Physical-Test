@@ -14,7 +14,8 @@ $('.daterange').daterangepicker({
   endDate: moment()
 }, function (start, end) {
     bar_chart(start,end);
-  console.log('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
+    console.log('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
+    $('.range-date').text('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
   //window.alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 });
 
@@ -88,7 +89,9 @@ function bar_chart(start, end) {
 }
 
 $(function () {
-  var today = new Date();
+  var date = new Date();
+  var today = dateFormat(date, 'dd-mm-yyyy');
   console.log(today);
+  $('.range-date').text('Start: '+today+' - End: '+today);
   bar_chart(today,today);
 });

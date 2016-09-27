@@ -56,6 +56,10 @@
 <script src="{{ asset('/js/search.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/dashboard_graphic.js') }}" type="text/javascript"></script>
 
+<script src="{{ asset('/js/date.format.js') }}" type="text/javascript"></script>
+
+
+
 
 <!-- Scripts in development mode -->
 <script type="text/javascript" src="{{ asset('js/jspdf.min.js') }}"></script>

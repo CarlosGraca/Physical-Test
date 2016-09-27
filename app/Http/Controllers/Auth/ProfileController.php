@@ -21,23 +21,29 @@ class ProfileController extends Controller
         return view('auth.profile');
     }
 
-    public function upadte_avatar(Request $request)
+    public function update_avatar(Request $request)
     {
+        $user=Auth::user();
         if ($request->hasFile('avatar')){
-        
+
             $image = $request->file('avatar');
             $filename  = time() . '.' . $image->getClientOriginalExtension();
-         
+
             $path = public_path('uploads/' . $filename);
 
+            if($user->avatar!=null){
+              if(file_exists('uploads/'.$user->avatar)){
+                unlink('uploads/'.$user->avatar);
+              }
+            }
 
             Image::make($image->getRealPath())->resize(200, 200)->save($path);
-           
-            $user=Auth::user();
+
+
             $user->avatar = $filename;
             $user->save();
          }
-         return redirect()->action('auth.profile');
+         return redirect()->back();
     }
     /**
      * Show the form for creating a new resource.

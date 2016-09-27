@@ -40,5 +40,4 @@ Route::post('tests/pdf/downloadhtml', 'TestController@downloadHTMLtoPDF');
 
 
 // usage inside a laravel route
-Route::post('upload','Auth\ProfileController@upadte_avatar');
-
+Route::post('upload','Auth\ProfileController@update_avatar');

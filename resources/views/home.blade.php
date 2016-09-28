@@ -56,7 +56,7 @@
 				<div class="box box-success">
 					<div class="box-header with-border">
 						<i class="fa fa-bar-chart"></i>
-						<h3 class="box-title">Bar Chart</h3>
+						<h3 class="box-title">{{ trans('adminlte_lang::message.chart_bar_title') }}</h3>
 
 						<div class="box-tools">
 							<button type="button" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range">

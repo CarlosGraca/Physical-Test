@@ -13,36 +13,36 @@ $('.daterange').daterangepicker({
   startDate: moment().subtract(29, 'days'),
   endDate: moment()
 }, function (start, end) {
-    bar_chart(start,end);
+    //bar_chart(start,end);
     console.log('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
     $('.range-date').text('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
   //window.alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    getDashboardData(start,end,'');
 });
 
-
-function bar_chart(start, end) {
+function bar_chart(label, dataTests, dataSheets) {
   var areaChartData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: label,
     datasets: [
       {
-        label: "Electronics",
-        fillColor: "rgba(210, 214, 222, 1)",
+        label: "Tests",
+        fillColor: "#00c0ef",
         strokeColor: "rgba(210, 214, 222, 1)",
         pointColor: "rgba(210, 214, 222, 1)",
         pointStrokeColor: "#c1c7d1",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
-        data: [65, 59, 80, 81, 56, 55, 40]
+        data: dataTests
       },
       {
-        label: "Digital Goods",
-        fillColor: "rgba(60,141,188,0.9)",
+        label: "Sheets",
+        fillColor: "#00a65a",
         strokeColor: "rgba(60,141,188,0.8)",
         pointColor: "#3b8bba",
         pointStrokeColor: "rgba(60,141,188,1)",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(60,141,188,1)",
-        data: [28, 48, 40, 19, 86, 27, 90]
+        data: dataSheets
       }
     ]
   };
@@ -88,10 +88,76 @@ function bar_chart(start, end) {
   barChart.Bar(barChartData, barChartOptions);
 }
 
+function getDashboardData(start, end, type) {
+  var url = 'dashboard/graphic';
+
+  var startDate = (type == 'local' ? start : start.format('YYYY-MM-DD')),
+  endDate = (type == 'local' ? end : end.format('YYYY-MM-DD')),
+  params = {'startDate':startDate, 'endDate':endDate};
+
+  $.ajax({
+        url: url,
+        data: params,
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+            var labels = [], dataTests=[], dataSheets=[];
+
+            if(result['tests'].length > result['sheets'].length){
+
+                for (var i = 0; i < result['tests'].length; i++) {
+                    if (result['tests'][i].month == result['sheets'][i].month) {
+                        labels.push(result['tests'][i].month);
+                        dataTests.push(result['tests'][i].test_count);
+                        dataSheets.push(result['sheets'][i].sheet_count);
+                    }else{
+                      labels.push(result['tests'][i].month);
+                      dataTests.push(result['tests'][i].test_count);
+                      dataSheets.push(0);
+                    }
+                }
+
+            }else{
+
+              for (var i = 0; i < result['sheets'].length; i++) {
+                  if (result['tests'][i].month == result['sheets'][i].month) {
+                      labels.push(result['sheets'][i].month);
+                      dataSheets.push(result['sheets'][i].sheet_count);
+                      dataTests.push(result['tests'][i].test_count);
+                  }else{
+                    labels.push(result['sheets'][i].month);
+                    dataSheets.push(result['sheets'][i].sheet_count);
+                    dataTests.push(0);
+                  }
+              }
+
+            }
+
+            bar_chart(labels, dataTests, dataSheets);
+
+            console.log(labels);
+            console.log(dataTests);
+            console.log(dataSheets);
+
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+  });
+}
+
 $(function () {
   var date = new Date();
-  var today = dateFormat(date, 'dd-mm-yyyy');
-  console.log(today);
-  $('.range-date').text('Start: '+today+' - End: '+today);
-  bar_chart(today,today);
+
+  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+  var startMonthShow = dateFormat(firstDay, 'dd-mm-yyyy');
+  var endMonthShow = dateFormat(lastDay, 'dd-mm-yyyy');
+
+  var startMonth = dateFormat(firstDay, 'yyyy-mm-dd');
+  var endMonth = dateFormat(lastDay, 'yyyy-mm-dd');
+
+  $('.range-date').text('Start: '+startMonthShow+' - End: '+endMonthShow);
+  getDashboardData(startMonth,endMonth,'local');
 });

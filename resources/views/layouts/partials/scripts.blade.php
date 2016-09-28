@@ -67,4 +67,11 @@
 
 <script type="text/javascript">
     $(":file").filestyle({input: false, icon: false, buttonName: "btn-primary",buttonText: "Select Image"});
+    
+    var token = $('meta[name="csrf_token"]').attr('content');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': token
+        }
+    });
 </script>

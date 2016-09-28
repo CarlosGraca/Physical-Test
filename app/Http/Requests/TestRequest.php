@@ -24,7 +24,24 @@ class TestRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'estatura'=>'required',
+          'peso'=>'required',
+          'circunferencia'=>'required',
+          'cintura'=>'required',
+          'quadril'=>'required',
+          'coxa'=>'required',
+          'panturrilha'=>'required',
+          'gordura'=>'required',
+          'taxa_metabolica'=>'required',
+          'forca_abdominal'=>'required',
+          'forca_mmii'=>'required',
+          'flexibilidade'=>'required',
+          'forca_mmss'=>'required',
+          'frequencia_card_rep'=>'required',
+          'pressao_sis'=>'required',
+          'pressao_dis'=>'required',
+          'potencia_aerobica'=>'required',
+          'dt_test'=>'required',
         ];
     }
 }

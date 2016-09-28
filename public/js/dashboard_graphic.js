@@ -135,10 +135,6 @@ function getDashboardData(start, end, type) {
 
             bar_chart(labels, dataTests, dataSheets);
 
-            console.log(labels);
-            console.log(dataTests);
-            console.log(dataSheets);
-
         },
         error: function (data) {
             console.log('Error:', data);
@@ -159,5 +155,7 @@ $(function () {
   var endMonth = dateFormat(lastDay, 'yyyy-mm-dd');
 
   $('.range-date').text('Start: '+startMonthShow+' - End: '+endMonthShow);
-  getDashboardData(startMonth,endMonth,'local');
+  var chart = $('#barChart').get(0);
+  if(chart !== undefined)
+    getDashboardData(startMonth,endMonth,'local');
 });

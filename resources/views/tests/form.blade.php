@@ -212,8 +212,8 @@
 
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
-			{!! Form::label('taxa_matabolica','Taxa metabóloca basal (Calorias/Dia):') !!}
-			{!! Form::number('taxa_matabolica', null, ['class'=>'form-control']) !!}
+			{!! Form::label('taxa_metabolica','Taxa metabóloca basal (Calorias/Dia):') !!}
+			{!! Form::number('taxa_metabolica', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
 </div>

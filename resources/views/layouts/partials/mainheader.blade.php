@@ -84,7 +84,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="{{ url('/logout') }}" data-toggle='tooltip' title="{{ trans('adminlte_lang::message.profile') }}"><i class="fa fa-sign-out"></i> {{ trans('adminlte_lang::message.signout') }}</a>
+                  <a href="{{ url('/logout') }}" data-toggle='tooltip' title="{{ trans('adminlte_lang::message.signout') }}"><i class="fa fa-sign-out"></i> {{ trans('adminlte_lang::message.signout') }}</a>
                 </li>
 
                   @endif

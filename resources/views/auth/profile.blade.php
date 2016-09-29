@@ -70,17 +70,17 @@
 					            <form action="{{ url('/password/reset') }}" method="post" class="form-horizontal">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					                <div class="form-group has-feedback">
-					                     <label for="password" class="col-sm-2 control-label">Password</label>
+					                     <label for="password" class="col-sm-2 control-label">Password *</label>
 					                     <div class="col-sm-10">
-						                    <input type="password" class="form-control" placeholder="Password" name="password"/>
+						                    <input type="password" class="form-control" placeholder="Password" id="password" name="password"/>
 						                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 					                    </div>
 					                </div>
 
 					                <div class="form-group has-feedback">
-					                    <label for="password_confirmation" class="col-sm-2 control-label">Password Confirmation</label>
+					                    <label for="password_confirmation" class="col-sm-2 control-label">Confirm Password *</label>
 					                    <div class="col-sm-10">
-						                    <input type="password" class="form-control" placeholder="Password Confirmation" name="password_confirmation"/>
+						                    <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation"/>
 						                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 						                 </div>
 					                </div>

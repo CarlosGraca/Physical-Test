@@ -1481,6 +1481,33 @@ $(function() {
   popoverClassificacao(age,sex);
 });
 
+
+$('#test-email').click(function(){
+  var url = "/tests/pdf/sendMail";
+  var id = $('#id').text();
+  $('.loader').css('display','block');
+  console.log(id);
+  $.ajax({
+    url: url,
+    type: 'POST',
+    dataType: 'json',
+    data: {id: id},
+    success: function(data) {
+      $('.loader').css('display','none');
+      if(data.type === 'success'){
+        toastr.success(data.message,{timeOut: 5000} ).css("width","300px");
+      }
+
+      if(data.type === 'error'){
+        toastr.error(data.message,{timeOut: 5000} ).css("width","300px");
+      }
+
+    }
+  });
+});
+
+
+
 /*
 
 $('#download-page').click(function(){

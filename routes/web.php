@@ -32,7 +32,7 @@ Route::get('search/autocomplete', 'SearchController@autocomplete');
 
 Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
 Route::get('/tests/pdf/{id}', 'TestController@test_report');
-Route::get('/tests/pdf/sendMail/{id}', 'MailController@sendTestReport');
+Route::post('/tests/pdf/sendMail/', 'MailController@sendTestReport');
 Route::get('tests/pdf/download/{id}', 'TestController@downloadPDF');
 
 Route::post('tests/pdf/downloadhtml', 'TestController@downloadHTMLtoPDF');

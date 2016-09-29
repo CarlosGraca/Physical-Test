@@ -55,8 +55,10 @@
 															</button>
 															<a href="{{ route('clients.edit',$client->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='false'])>   <i class="fa fa-edit"></i>
 																</a>
-															<a href="{{ url('tests/pdf/') }}/{{$client->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-															</a>
+															<!--
+																<a href="{{ url('tests/pdf/') }}/{{$client->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
+																</a>
+														-->
 															<a href="{{ route('tests.edit',$client->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
 															</a>
 													</td>

@@ -5,7 +5,9 @@
 @endsection
 
 @section('main-content')
-
+	<div class="loader" style="display:none; position:fixed; right:0; bottom:0; top:0;">
+		<img src="{{asset('img/gears.gif')}}" />
+	</div>
 <!-- Main content -->
     <section class="invoice">
        <!-- this row will not appear when printing -->
@@ -14,8 +16,8 @@
                 <span style="display: none;" id='id'>{{$test['id']}}</span>
                 <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>
                 <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
-                <a href="/tests/pdf/download/{{$test['id']}}" id="download-page" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
-                <a href="/tests/pdf/sendMail/{{$test['id']}}" id="email-page" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
+                <a href="/tests/pdf/download/{{$test['id']}}" id="test-download" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
+                <a href="#" id="test-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
             </div>
         </div>
         <!-- title row -->

@@ -181,7 +181,7 @@ class TestController extends Controller
         $show = false;
 
         $pdf = \PDF::loadView('tests.test_report',compact('clients','item_name','test','show'))->setPaper('a4', 'portrait')->setWarnings(false);
-        return $pdf->stream();//download('final_test.pdf');
+        return $pdf->download('final_test.pdf');//stream();
     }
 
     public function downloadHTMLtoPDF(TestRequest $request)

@@ -12,8 +12,10 @@ use App\Test;
 
 class MailController extends Controller
 {
-      public function sendTestReport($id){
-      //  $id = 12;
+      public function sendTestReport(Request $request){
+
+        $id = $request->input('id');
+
         $clients = DB::table('tests')
                  ->select('clients.name','clients.dt_nasc','clients.sexo','tests.dt_test','clients.telemovel','clients.email')
                  ->where('tests.id',$id)
@@ -32,12 +34,18 @@ class MailController extends Controller
         $show = false;
 
           //$data=['name'=>'Harison matondang'];
-          Mail::send('tests.test_report',compact('clients','item_name','test','show'), function($message) use ($email)
+          Mail::send('tests.test_report',compact('clients','item_name','test','show'), function($message) use ($clients)
           {
             //  $message->from('ailtonsemedo.2006@gmail.com');
-            $message->to($email)->subject('Ficha de Avaliação Física');
+            $message->to($clients[0]->email,$clients[0]->name)->subject('Ficha de Avaliação Física');
           });
-          echo 'Email Was Sent!';
+
+          if(count(Mail::failures()) > 0){
+              $message = ['message'=>'Failed to send report to email, please try again.','type'=>'error'];
+          }else{
+              $message = ['message'=>'Message report send with success.','type'=>'success'];
+          }
+          return $message;
       }
 
       //create new function to send HTML email

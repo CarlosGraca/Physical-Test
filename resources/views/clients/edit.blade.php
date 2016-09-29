@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.new_client') }}
+	{{ trans('adminlte_lang::message.update_client') }}
 @endsection
 
 @section('contentheader_title')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-  {{ trans('adminlte_lang::message.new_client') }}
+  {{ trans('adminlte_lang::message.update_client') }}
 @endsection
 
 
@@ -33,14 +33,13 @@
 											 <i class="fa  fa-arrow-left"></i>
 										</a>
 
-										<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="add-client">
+										<a href="#" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Save" id="edit-client">
 											 <i class="fa fa-save"></i>
 										</a>
 								</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
-
 	            <div class="box-body">
-	                 @include('clients.form', ['type'=>'none'])
+	                 @include('clients.form', ['type'=>'update','client'=>$client])
 	            </div>
 	        </div>
 	    </div>

@@ -138,4 +138,5 @@ return [
     'chart_bar_title'         => 'Bar Chart',
     'clients'                 => 'Clients',
     'new_client'              => 'New Client',
+    'update_client'           => 'Update Client',
 ];

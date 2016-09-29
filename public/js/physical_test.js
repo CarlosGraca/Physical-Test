@@ -1374,8 +1374,6 @@ function popoverClassificacao(idade, sexo) {
 $('#add-test').on('click',function(){
     var type = "POST";
     var my_url_cli = "/clients";
-    var dataCli;
-  //  var table =[];
     var token = $('meta[name="csrf_token"]').attr('content');
     $.ajaxSetup({
         headers: {
@@ -1393,29 +1391,7 @@ $('#add-test').on('click',function(){
     }
     var client_id = $('#client_id').val();
     if (client_id === '') {
-        $.ajax({
-            type: type,
-            url: my_url_cli,
-            data: formDataCli,
-            dataType: 'json',
-            success: function (data ) {
-                console.log(data);
-              //  var successHtml = 'User saved with success';
-              //  toastr.success(successHtml,{timeOut: 5000} ).css("width","300px");
-               save_test(data.id,type);
-            },
-            error: function (data) {
-                console.log('Error:', data);
-                if( data.status === 422 ) {
-                    $errors = data.responseJSON;
-                    var errorsHtml= '';
-                    $.each( $errors, function( key, value ) {
-                        errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
-                    });
-                    toastr.error(errorsHtml,{timeOut: 5000} ).css("width","500px");
-                }
-            }
-        });
+      saveClient('tests','create');
     }else{
       save_test(client_id,type);
     }

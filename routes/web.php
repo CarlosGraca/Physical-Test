@@ -23,7 +23,7 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('sheet_details', 'SheetDetailController');
 	Route::resource('clients','ClientController');
 	Route::resource('auth/profile', 'Auth\ProfileController');
-
+  //Route::resource('dashboard','DashboardGraphic');
 });
 
 
@@ -37,6 +37,8 @@ Route::get('tests/pdf/download/{id}', 'TestController@downloadPDF');
 
 Route::post('tests/pdf/downloadhtml', 'TestController@downloadHTMLtoPDF');
 
+//Dashboard getData
+Route::post('dashboard/graphic', 'DashboardGraphic@getData');
 
 
 // usage inside a laravel route

@@ -135,4 +135,5 @@ return [
     'password'                => 'Password',
     'retrypepassword'         => 'Retype password',
     'fullname'                => 'Full Name',
+    'chart_bar_title'         => 'Bar Chart',
 ];

@@ -77,14 +77,16 @@
                   -->
 
                 <li class="user user-menu">
-                  <a href="{{ url('auth/profile') }}">
+                  <a href="{{ url('auth/profile') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
                     <img src='/uploads/{{Auth::user()->avatar}}' class="user-image" alt="User Image"/>
                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
                     <span class="hidden-xs">{{ Auth::user()->name }}</span>
                   </a>
                 </li>
                 <li>
-                  <a href="{{ url('/logout') }}" data-toggle='tooltip' title="{{ trans('adminlte_lang::message.signout') }}"><i class="fa fa-sign-out"></i> {{ trans('adminlte_lang::message.signout') }}</a>
+
+                  <a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> {{ trans('adminlte_lang::message.signout') }}</a>
+
                 </li>
 
                   @endif

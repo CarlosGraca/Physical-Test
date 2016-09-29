@@ -106,24 +106,36 @@ function getDashboardData(start, end, type) {
             if(result['tests'].length > result['sheets'].length){
 
                 for (var i = 0; i < result['tests'].length; i++) {
-                    if (result['tests'][i].month == result['sheets'][i].month) {
+                  if(result['sheets'].length > 0){
+                      if (result['tests'][i].month == result['sheets'][i].month) {
+                          labels.push(result['tests'][i].month);
+                          dataTests.push(result['tests'][i].test_count);
+                          dataSheets.push(result['sheets'][i].sheet_count);
+                      }else{
                         labels.push(result['tests'][i].month);
                         dataTests.push(result['tests'][i].test_count);
-                        dataSheets.push(result['sheets'][i].sheet_count);
-                    }else{
-                      labels.push(result['tests'][i].month);
-                      dataTests.push(result['tests'][i].test_count);
-                      dataSheets.push(0);
-                    }
+                        dataSheets.push(0);
+                      }
+                  }else{
+                    labels.push(result['tests'][i].month);
+                    dataTests.push(result['tests'][i].test_count);
+                    dataSheets.push(0);
+                  }
                 }
 
             }else{
 
               for (var i = 0; i < result['sheets'].length; i++) {
-                  if (result['tests'][i].month == result['sheets'][i].month) {
+                if(result['tests'].length > 0){
+                    if (result['tests'][i].month == result['sheets'][i].month) {
+                        labels.push(result['sheets'][i].month);
+                        dataSheets.push(result['sheets'][i].sheet_count);
+                        dataTests.push(result['tests'][i].test_count);
+                    }else{
                       labels.push(result['sheets'][i].month);
                       dataSheets.push(result['sheets'][i].sheet_count);
-                      dataTests.push(result['tests'][i].test_count);
+                      dataTests.push(0);
+                    }
                   }else{
                     labels.push(result['sheets'][i].month);
                     dataSheets.push(result['sheets'][i].sheet_count);

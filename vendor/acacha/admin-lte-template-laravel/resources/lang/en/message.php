@@ -139,4 +139,5 @@ return [
     'clients'                 => 'Clients',
     'new_client'              => 'New Client',
     'update_client'           => 'Update Client',
+    'client'                  => 'Client',
 ];

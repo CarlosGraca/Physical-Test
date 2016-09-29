@@ -58,9 +58,10 @@
 															<!--
 																<a href="{{ url('tests/pdf/') }}/{{$client->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
 																</a>
-														-->
+
 															<a href="{{ route('tests.edit',$client->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
 															</a>
+																-->
 													</td>
 												</tr>
 											@endforeach

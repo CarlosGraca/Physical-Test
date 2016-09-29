@@ -46,7 +46,7 @@
 													<td>{{$test->client->name}}</td>
 													<td>{{$test->client->email}}</td>
 													<td>{{$test->client->telemovel }}/{{$test->client->telefone }}</td>
-													<td>{{ $test->dt_test }}</td>
+													<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $test->dt_test)->format('d-m-Y') }}</td>
 													<td>
 															<button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete" data-product_id="{{ $test->id }}" data-product_name="{{ $test->id }}">
 																<i class="fa fa-trash"></i>

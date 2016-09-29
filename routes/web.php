@@ -43,3 +43,5 @@ Route::post('dashboard/graphic', 'DashboardGraphic@getData');
 
 // usage inside a laravel route
 Route::post('upload','Auth\ProfileController@update_avatar');
+
+Route::get('/basicemail', 'MailController@basic_email');

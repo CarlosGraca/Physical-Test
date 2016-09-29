@@ -32,7 +32,7 @@ Route::get('search/autocomplete', 'SearchController@autocomplete');
 
 Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
 Route::get('/tests/pdf/{id}', 'TestController@test_report');
-Route::get('/tests/pdf/sendMail/{id}', 'TestController@sendMail');
+Route::get('/tests/pdf/sendMail/{id}', 'MailController@sendTestReport');
 Route::get('tests/pdf/download/{id}', 'TestController@downloadPDF');
 
 Route::post('tests/pdf/downloadhtml', 'TestController@downloadHTMLtoPDF');
@@ -44,4 +44,4 @@ Route::post('dashboard/graphic', 'DashboardGraphic@getData');
 // usage inside a laravel route
 Route::post('upload','Auth\ProfileController@update_avatar');
 
-Route::get('/basicemail/{id}', 'MailController@basic_email');
+//Route::get('/basicemail/{id}', 'MailController@sendTestReport');

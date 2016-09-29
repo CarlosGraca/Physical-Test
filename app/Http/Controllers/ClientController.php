@@ -18,12 +18,12 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        
+
         if (Request::wantsJson()) {
             return $clients;
         } else {
             return view('clients.index',compact('clients'));
-        } 
+        }
     }
 
     /**
@@ -33,7 +33,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -50,8 +50,8 @@ class ClientController extends Controller
 
         if (Request::wantsJson()){
             return $client;
-        }else{             
-             //return view('sheets.create');             
+        }else{
+             //return view('sheets.create');
         }
     }
 

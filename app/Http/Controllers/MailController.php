@@ -12,7 +12,7 @@ use App\Test;
 
 class MailController extends Controller
 {
-      public function basic_email($id){
+      public function sendTestReport($id){
       //  $id = 12;
         $clients = DB::table('tests')
                  ->select('clients.name','clients.dt_nasc','clients.sexo','tests.dt_test','clients.telemovel','clients.email')
@@ -32,11 +32,12 @@ class MailController extends Controller
         $show = false;
 
           //$data=['name'=>'Harison matondang'];
-          Mail::send('tests.test_report',compact('clients','item_name','test','show'), function($message){
-              $message->to('af131588@us.edu.cv','Ailton Fortes')->subject('Send Mail from Laravel with Basics Email');
-              $message->from('info.physicaltest@gmail.com','PhysicalTest');
+          Mail::send('tests.test_report',compact('clients','item_name','test','show'), function($message) use ($email)
+          {
+            //  $message->from('ailtonsemedo.2006@gmail.com');
+            $message->to($email)->subject('Ficha de Avaliação Física');
           });
-          echo 'Basics Email was sent!';
+          echo 'Email Was Sent!';
       }
 
       //create new function to send HTML email

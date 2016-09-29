@@ -136,4 +136,6 @@ return [
     'retrypepassword'         => 'Retype password',
     'fullname'                => 'Full Name',
     'chart_bar_title'         => 'Bar Chart',
+    'clients'                 => 'Clients',
+    'new_client'              => 'New Client',
 ];

@@ -1588,10 +1588,11 @@ function createPDF(){
             //doc.addImage(img, 'JPEG', 15, 40, 180, 160);
             doc.addImage(img, 'JPEG', 5, 10, 0, 0);
             doc.save(''+$('.report').find('title').text()+'.pdf');
+            toastr.success('PDF Generated and Downloaded with success!',{timeOut: 5000} ).css("width","300px");
             $('.loader').css('display','none');
             $('.no-print').css('display','block');
             $('.invoice').css('border','1px solid #f4f4f4');
-            form.css(cache_width);
+            form.width(cache_width);
            }
        });
  }

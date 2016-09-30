@@ -41,7 +41,12 @@ Route::post('tests/pdf/downloadhtml', 'TestController@downloadHTMLtoPDF');
 Route::post('dashboard/graphic', 'DashboardGraphic@getData');
 
 
+
 // usage inside a laravel route
 Route::post('upload','Auth\ProfileController@update_avatar');
 
+Route::get('edit/user/field/{name}','Auth\ProfileController@getPopEdit');
+
 //Route::get('/basicemail/{id}', 'MailController@sendTestReport');
+//Change user fields
+Route::post('update/user/field/','Auth\ProfileController@updateField');

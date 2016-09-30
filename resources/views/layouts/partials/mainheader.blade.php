@@ -80,7 +80,7 @@
                   <a href="{{ url('auth/profile') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
                     <img src='/uploads/{{Auth::user()->avatar}}' class="user-image" alt="User Image"/>
                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                    <span class="hidden-xs"><span class="name">{{ Auth::user()->name }}</span></span>
                   </a>
                 </li>
                 <li>

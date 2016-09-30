@@ -56,6 +56,7 @@
 <script src="{{ asset('/js/search.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/dashboard_graphic.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/clients.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/users.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/date.format.js') }}" type="text/javascript"></script>
 
 

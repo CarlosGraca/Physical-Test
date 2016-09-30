@@ -53,10 +53,10 @@
 					        		<div class="col-lg-9">
 					        			<ul class="list-group list-group-unbordered">
 						                    <li class="list-group-item">
-						                      <b>Name: </b>{{Auth::user()->name}} <a href="#" data-placement='right' data-toggle='popover' title ='Padrão de Saúde' data-content=''  data-trigger='hover'> <i class="fa fa-pencil"></i> </a>
+						                      <b>Name: </b><span class="name">{{Auth::user()->name}}</span> <a href="#" id='user-name' title='Edit'> <i class="fa fa-pencil"></i> </a>
 						                    </li>
 						                    <li class="list-group-item">
-						                      <b>Email: </b>{{Auth::user()->email}} <a href="#">  <i class="fa fa-pencil"></i> </a>
+						                      <b>Email: </b>{{Auth::user()->email}} <a href="#" id='user-email'>  <i class="fa fa-pencil"></i> </a>
 						                    </li>
 						                    <li class="list-group-item">
 						                      <b>Created At: </b> {{Auth::user()->created_at}}

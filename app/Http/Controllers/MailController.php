@@ -15,6 +15,15 @@ class MailController extends Controller
       public function sendTestReport(Request $request){
 
         $id = $request->input('id');
+        $attachment = $request->input('data');
+
+        if(!empty($attachment)){
+            $data = base64_decode($attachment);
+            $fname = "attachments/test_report.pdf"; // name the file
+            file_put_contents($fname, $data );
+          } else {
+            echo "No Data Sent";
+          }
 
         $clients = DB::table('tests')
                  ->select('clients.name','clients.dt_nasc','clients.sexo','tests.dt_test','clients.telemovel','clients.email')
@@ -30,14 +39,15 @@ class MailController extends Controller
             'pressao_sis'=>'Pressão Arterial Sistólica (mmHg)','pressao_dis'=>'Pressão Arterial Diastólica (mmHg)','potencia_aerobica'=>'Potência Aeróbica (ml/Kg/min)','forca_abdominal'=>'Força Abdominal (nº rep/1min)','forca_mmii'=>'Força MMII (IVC cm)','flexibilidade'=>'Flexibilidade (cm)','forca_mmss'=>'Força MMSS (nº de repetições)'
         ];
 
-        $test = Test::find($id);
-        $show = false;
+          $test = Test::find($id);
+          $show = false;
+          $document = 'Test';
 
-          //$data=['name'=>'Harison matondang'];
-          Mail::send('tests.test_report',compact('clients','item_name','test','show'), function($message) use ($clients)
+          Mail::send('report.template',compact('clients','document'), function($message) use ($clients,$fname)
           {
             //  $message->from('ailtonsemedo.2006@gmail.com');
             $message->to($clients[0]->email,$clients[0]->name)->subject('Ficha de Avaliação Física');
+            $message->attach($fname);
           });
 
           if(count(Mail::failures()) > 0){

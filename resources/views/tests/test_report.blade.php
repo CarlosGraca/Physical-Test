@@ -5,19 +5,23 @@
 @endsection
 
 @section('main-content')
-
+	<div class="loader" style="display:none; position:fixed; right:0; bottom:0; top:0;">
+		<img src="{{asset('img/gears.gif')}}" />
+	</div>
 <!-- Main content -->
-    <section class="invoice">
+    <section class="invoice" id="download-content">
        <!-- this row will not appear when printing -->
-        <div class="row no-print" style="{{$show == true ? ' ':'display: none'}}">
+			 @if($show === true)
+        <div class="row no-print">
             <div class="col-xs-12">
                 <span style="display: none;" id='id'>{{$test['id']}}</span>
                 <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>
                 <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
-                <a href="/tests/pdf/download/{{$test['id']}}" id="download-page" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
-                <a href="/tests/pdf/sendMail/{{$test['id']}}" id="email-page" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
+                <a href="#" id="test-download" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
+                <a href="#" id="test-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
             </div>
         </div>
+				@endif
         <!-- title row -->
 	    <div class="row">
 	        <div class="col-xs-12">
@@ -53,6 +57,7 @@
 	        </div><!-- /.col -->
 
         </div><!-- /.row -->
+
 	   <!-- Table row -->
         <div class="row">
             <div class="col-xs-12 table-responsive">

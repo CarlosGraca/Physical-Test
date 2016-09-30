@@ -110,4 +110,46 @@ class ProfileController extends Controller
     {
         //
     }
+
+    public function getPopEdit($name)
+    {
+      # code...
+      $user = Auth::user();
+      switch ($name) {
+        case 'name':
+          return view('layouts.shared.field',['name'=>$name,'label'=>'Name: ','value'=>$user->name]);
+          break;
+        case 'email':
+          return view('layouts.shared.field',['name'=>$name,'label'=>'Email: ','value'=>$user->email]);
+          break;
+
+        default:
+          # code...
+          break;
+      }
+    }
+
+    public function updateField(Request $request)
+    {
+      # code...
+      $field = $request->input('field');
+      $user = Auth::user();
+      switch ($field) {
+        case 'name':
+          $user->name = $request->input('name');
+          $user->save();
+          return ['field_value'=>$user->name,'type'=>'success','message'=>'Name updated with success'];
+          break;
+
+        case 'email':
+          $user->email = $request->input('email');
+          $user->save();
+          return ['field_value'=>$user->email,'type'=>'success','message'=>'Email updated with success'];
+          break;
+
+        default:
+            return ['field_value'=>'','type'=>'error','message'=>'#Error: The user '.$field.' cannot saved!'];
+          break;
+      }
+    }
 }

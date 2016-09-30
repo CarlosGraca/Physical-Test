@@ -16,6 +16,7 @@ $(function()
 					$('#telefone').val(data.telefone);
 					$('#telemovel').val(data.telemovel);
 					$('#sexo').val(data.sexo);
+					$('#morada').val(data.morada);
 					var dt_test = new Date($('#dt_test').val());
 					if(dt_test != undefined){
 						var idade = get_idade(dt_test,data.dt_nasc);

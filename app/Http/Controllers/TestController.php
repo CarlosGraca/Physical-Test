@@ -180,15 +180,20 @@ class TestController extends Controller
         $test = Test::find($id);
         $show = false;
 
-        $pdf = \PDF::loadView('tests.test_report',compact('clients','item_name','test','show'))->setPaper('a4', 'portrait')->setWarnings(false);
-        return $pdf->stream();//download('final_test.pdf');
+        $view =  \View::make('tests.test_report',compact('clients','item_name','test','show'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+      //  return $pdf->stream('invoice');
+
+      //  $pdf = \PDF::loadView('report.index',compact('clients','item_name','test','show'))->setPaper('a4', 'portrait')->setWarnings(false);
+        return $pdf->stream('final_test.pdf');//stream();
     }
 
-    public function downloadHTMLtoPDF(TestRequest $request)
+    public function downloadHTMLtoPDF(\Illuminate\Http\Request $request)
     {
-        $html = $request['html'];
+        $html = $request->input('html');
         $pdf = \PDF::loadHTML($html)->setPaper('a4', 'portrait')->setWarnings(false)->save('final_test.pdf');
-        return $pdf->download('final_test.pdf');
+        return $pdf->stream('final_test.pdf');
     }
 
 }

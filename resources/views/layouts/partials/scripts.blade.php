@@ -55,8 +55,11 @@
 <script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/search.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/dashboard_graphic.js') }}" type="text/javascript"></script>
-
+<script src="{{ asset('/js/clients.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/users.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/date.format.js') }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('/plugins/html2canvas/dist/html2canvas.js')}}"></script>
+
 
 
 
@@ -67,7 +70,7 @@
 
 <script type="text/javascript">
     $(":file").filestyle({input: false, icon: false, buttonName: "btn-primary",buttonText: "Select Image"});
-    
+
     var token = $('meta[name="csrf_token"]').attr('content');
     $.ajaxSetup({
         headers: {

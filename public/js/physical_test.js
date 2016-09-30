@@ -1483,15 +1483,24 @@ $(function() {
 
 
 $('#test-email').click(function(){
-  var url = "/tests/pdf/sendMail";
-  var id = $('#id').text();
+
+  createPDF('send');
+  //console.log(pdf);
+  /*
+  */
+  return false;
+});
+
+function sendMail(data) {
   $('.loader').css('display','block');
-  console.log(id);
+  var url = "/tests/pdf/sendMail";
+  $('body').scrollTop(0);
+
   $.ajax({
     url: url,
     type: 'POST',
     dataType: 'json',
-    data: {id: id},
+    data: data,
     success: function(data) {
       $('.loader').css('display','none');
       if(data.type === 'success'){
@@ -1502,10 +1511,14 @@ $('#test-email').click(function(){
         toastr.error(data.message,{timeOut: 5000} ).css("width","300px");
       }
 
-    }
+    },
+    cache: false,
+    contentType: false,
+    processData: false
   });
-});
+}
 
+//Não preciso desse método por agora!
 $(function () {
     var specialElementHandlers = {
         '#editor': function (element,renderer) {
@@ -1559,17 +1572,18 @@ $('#test-download').click(function () {
         }
     });*/
 
-(function(){
+//Gerator of PDF
 var form = $('.invoice'),  cache_width = form.width(),  a4  =[ 595.28,  841.89];  // for a4 size paper width and height
-
 $(document).on('click','#test-download',function(){
      $('.loader').css('display','block');
      $('body').scrollTop(0);
-     createPDF();
+     createPDF('download');
      return false;
 });
+
+
 //create pdf
-function createPDF(){
+function createPDF(type){
   $('.no-print').css('display','none');
   $('.invoice').css('border','none');
   form.width((a4[0]*1.33333) -80).css('max-width','none');
@@ -1587,26 +1601,27 @@ function createPDF(){
             doc = new jsPDF('portrait','mm','a4');
             //doc.addImage(img, 'JPEG', 15, 40, 180, 160);
             doc.addImage(img, 'JPEG', 5, 10, 0, 0);
-            doc.save(''+$('.report').find('title').text()+'.pdf');
-            toastr.success('PDF Generated and Downloaded with success!',{timeOut: 5000} ).css("width","300px");
-            $('.loader').css('display','none');
+            if(type === 'download'){
+              doc.save(''+$('.report').find('title').text()+'.pdf');
+                $('.loader').css('display','none');
+              toastr.success('PDF Generated and Downloaded with success!',{timeOut: 5000} ).css("width","300px");
+            }
+            if(type === 'send'){
+              var id = $('#id').text();
+              var data = new FormData();
+              var pdf = btoa(doc.output());
+              data.append("data" , pdf);
+              data.append("id", id);
+              sendMail(data);
+              //return pdf;
+            }
+
             $('.no-print').css('display','block');
             $('.invoice').css('border','1px solid #f4f4f4');
             form.width(cache_width);
            }
        });
  }
-
-// create canvas object
-function getCanvas(){
- form.width((a4[0]*1.33333) -80).css('max-width','none');
- return html2canvas($(".invoice"),{
-     imageTimeout:2000,
-     removeContainer:true
-    });
-}
-
-}());
 
   /*  $('.invoice').css('border','none');
     //$('.invoice-info').css('display','none');

@@ -1506,7 +1506,21 @@ $('#test-email').click(function(){
   });
 });
 
-
+$(function () {
+    var specialElementHandlers = {
+        '#editor': function (element,renderer) {
+            return true;
+        }
+    };
+ /*$('#test-download').click(function () {
+        var doc = new jsPDF('portrait');
+        $('.no-print').css('display','none');
+        doc.fromHTML($('#download-content').get(0), 15, 15, {
+            'width': 170,'elementHandlers': specialElementHandlers
+        });
+        doc.save('sample-file.pdf');
+    });*/
+});
 
 /*
 
@@ -1528,26 +1542,86 @@ $('#download-page').click(function(){
   });
 
   //doc.save('sample-file.pdf');
-//  alert('clicked');
-  var url = '/pdf/tests/downloadhtml';
+  *//*
+$('#test-download').click(function () {
+  var url = '/tests/pdf/downloadhtml';
 //  var id = $('#id').text();
-  var html = document.documentElement.innerHTML;
-
-    var token = $('meta[name="csrf_token"]').attr('content');
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': token
+//  var html = document.documentElement.innerHTML;
+    $('.no-print').css('display','none');
+    html2canvas($(".invoice"), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            canvas.toBlob(function(blob) {
+                console.log(blob);
+                saveAs(blob, "report.png");
+                $('.no-print').css('display','block');
+            });
         }
-    });
+    });*/
 
-  //console.log(html);
+(function(){
+var form = $('.invoice'),  cache_width = form.width(),  a4  =[ 595.28,  841.89];  // for a4 size paper width and height
+
+$(document).on('click','#test-download',function(){
+     $('.loader').css('display','block');
+     $('body').scrollTop(0);
+     createPDF();
+     return false;
+});
+//create pdf
+function createPDF(){
+  $('.no-print').css('display','none');
+  $('.invoice').css('border','none');
+  form.width((a4[0]*1.33333) -80).css('max-width','none');
+  html2canvas($("#download-content"), {
+     useCORS: true,
+     allowTaint: true,
+     imageTimeout : 2000,
+     removeContainer : true,
+      onrendered: function(canvas) {
+            canvas.webkitImageSmoothingEnabled = false;
+            canvas.mozImageSmoothingEnabled = false;
+            canvas.imageSmoothingEnabled = false;
+            var img = canvas.toDataURL("image/jpeg");
+            //console.log(img);
+            doc = new jsPDF('portrait','mm','a4');
+            //doc.addImage(img, 'JPEG', 15, 40, 180, 160);
+            doc.addImage(img, 'JPEG', 5, 10, 0, 0);
+            doc.save(''+$('.report').find('title').text()+'.pdf');
+            $('.loader').css('display','none');
+            $('.no-print').css('display','block');
+            $('.invoice').css('border','1px solid #f4f4f4');
+            form.css(cache_width);
+           }
+       });
+ }
+
+// create canvas object
+function getCanvas(){
+ form.width((a4[0]*1.33333) -80).css('max-width','none');
+ return html2canvas($(".invoice"),{
+     imageTimeout:2000,
+     removeContainer:true
+    });
+}
+
+}());
+
+  /*  $('.invoice').css('border','none');
+    //$('.invoice-info').css('display','none');
+    var html = $('.report').html();
+    $('.loader').css('display','block');
   $.ajax({
     url: url,
     type: 'POST',
     data: {html: html},
     success: function(data) {
-
+      //$('.invoice-info').css('display','block');
+      $('.no-print').css('display','block');
+      $('.loader').css('display','none');
+      $('.invoice').css('border','1px solid #f4f4f4');
     }
   });
   return false;
+
 });*/

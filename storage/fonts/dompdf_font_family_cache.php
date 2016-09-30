@@ -83,4 +83,7 @@
   'ionicons' => array(
     'normal' => $fontDir . '\499ed0e151682fc2c1ba5340c204f05f',
   ),
+  'sourcesanspro' => array(
+    'normal' => $fontDir . '\6dbf5b0c511237f8a165e1f1c22abb23',
+  ),
 ) ?>

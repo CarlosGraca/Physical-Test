@@ -58,6 +58,8 @@
 <script src="{{ asset('/js/clients.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/users.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/date.format.js') }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('/plugins/html2canvas/dist/html2canvas.js')}}"></script>
+
 
 
 

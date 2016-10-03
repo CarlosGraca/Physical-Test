@@ -52,7 +52,7 @@
 	    </div>
 		</div>
 		<div class="col-md-6 col-sm-12 col-xs-12">
-			@include('dashboard.bar_chart',[])
+			@include('dashboard.index',[])
 		</div>
 	</div>
 @endsection

@@ -15,10 +15,11 @@
         <div class="row no-print">
             <div class="col-xs-12">
                 <span style="display: none;" id='id'>{{$test['id']}}</span>
+                 <span style="display: none;" id='document'>Ficha de Avaliação Física</span>
                 <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>
                 <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
-                <a href="#" id="test-download" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
-                <a href="#" id="test-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
+                <a href="#" id="btn-download" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-cloud-download"></i> Download</a>
+                <a href="#" id="btn-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
             </div>
         </div>
 				@endif
@@ -26,7 +27,11 @@
 	    <div class="row">
 	        <div class="col-xs-12">
 	          <h2 class="page-header">
-	            <img src="{{asset('/img/logo.png')}}" width="150" alt="" >
+	            @if(isset($setting->logo_url))
+    		    	<img  src="/uploads/{{$setting->logo_url}}" id="logo" class="img-thumbnail" alt="Cinque Terre" width="150" height="100">
+    		    @else
+    		    	<img  src="/img/round-logo.jpg" id="logo" class="img-thumbnail" alt="Cinque Terre" width="150" >
+		        @endif
 	            <small class="pull-right"><strong style="text-align: center;">Avaliação da Apetidão Física</strong></small>
 	          </h2>
             </div><!-- /.col -->
@@ -36,7 +41,7 @@
 
 	        <div class="col-sm-4 invoice-col">
 	          <address>
-	            <b>Nome: </b>{{$clients[0]->name}}<br>
+	            <b>Nome: </b><span id="name">{{$clients[0]->name}}</span><br>
 	            <b>Data de nascimento: </b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $clients[0]->dt_nasc)->format('d-m-Y') }}<br>
 	          </address>
 	        </div><!-- /.col -->
@@ -51,7 +56,7 @@
 
           <div class="col-sm-4 invoice-col">
 	          <address>
-	            <b>Email: </b>{{$clients[0]->email}}<br>
+	            <b>Email: </b><span id="email">{{$clients[0]->email}}</span><br>
               <b>Data de avaliação: </b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $clients[0]->dt_test)->format('d-m-Y')}}<br>
 	          </address>
 	        </div><!-- /.col -->

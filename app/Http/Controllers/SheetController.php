@@ -128,6 +128,9 @@ class SheetController extends Controller
                  ->where('sheets.id',$id)
                  ->join('clients','sheets.client_id','=','clients.id')
                  ->TAKE(1)->get();
+
+        $setting = DB::table('settings')->first();
+
         $biceps_antebraco = DB::table('exercises')                          
                            ->leftjoin('sheet_details', function($join) use ($id)
                             {
@@ -191,7 +194,7 @@ class SheetController extends Controller
                            ->select('exercises.id','exercises.name','sheet_details.ordem','sheet_details.serie','sheet_details.repet','sheet_details.map')
                            ->where('type','abdmen')  
                           ->get();   
-        return view('sheets.handout_training', compact('biceps_antebraco','triceps','quadril_perna_coxa','abdomen','costas','peitoral','ombro_trapezio','clients'));
+        return view('report.handout_training', compact('biceps_antebraco','triceps','quadril_perna_coxa','abdomen','costas','peitoral','ombro_trapezio','clients','setting'));
     }
 
     /**
@@ -212,9 +215,16 @@ class SheetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sheet $sheet)
     {
-        //
+        $deleted= $sheet->delete();
+        session()->flash('flash_message','Sheet was removed with success');
+
+        if (Request::wantsJson()){
+          return (string) $deleted;
+        }else{
+          return redirect('sheets');
+        }
     }
 
     public function download($d)

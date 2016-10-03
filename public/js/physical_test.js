@@ -1482,12 +1482,9 @@ $(function() {
 });
 
 
-$('#test-email').click(function(){
+/*$('#test-email').click(function(){
 
   createPDF('send');
-  //console.log(pdf);
-  /*
-  */
   return false;
 });
 
@@ -1516,7 +1513,7 @@ function sendMail(data) {
     contentType: false,
     processData: false
   });
-}
+}*/
 
 //Não preciso desse método por agora!
 $(function () {
@@ -1573,7 +1570,7 @@ $('#test-download').click(function () {
     });*/
 
 //Gerator of PDF
-var form = $('.invoice'),  cache_width = form.width(),  a4  =[ 595.28,  841.89];  // for a4 size paper width and height
+/*var form = $('.invoice'),  cache_width = form.width(),  a4  =[ 595.28,  841.89];  // for a4 size paper width and height
 $(document).on('click','#test-download',function(){
      $('.loader').css('display','block');
      $('body').scrollTop(0);

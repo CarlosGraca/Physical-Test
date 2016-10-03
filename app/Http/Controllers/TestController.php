@@ -107,11 +107,19 @@ class TestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Test $test)
     {
         // delete
-        $test = Test::find($id);
-        $test->delete();
+        /*$test = Test::find($id);
+        $test->delete();*/
+        $deleted= $test->delete();
+        session()->flash('flash_message','Sheet was removed with success');
+
+        if (Request::wantsJson()){
+          return (string) $deleted;
+        }else{
+          return redirect('tests');
+        }
     }
 
     public function test_report($id)
@@ -121,7 +129,7 @@ class TestController extends Controller
                ->where('tests.id',$id)
                ->join('clients','tests.client_id','=','clients.id')
                ->TAKE(1)->get();
-
+      $setting = DB::table('settings')->first();
       $item_name = [
           'estatura'=>'Estatura (cm)','peso'=>'Peso (kg)','imc'=>'IMC kg/m²','dc_tricepts'=>'DC Tríceps (mm)','soma_dc_triceps_subescapular'=>'Soma DC Tríceps + Subescapular (mm)','soma5_dc'=>'Soma 5 DC (mm)','circunferencia'=>'Circunferência: Busto (cm)','cintura'=>'Cintura  (cm)','quadril'=>'Quadril  (cm)','coxa'=>'Coxa (cm)','panturrilha'=>'C. Panturrilha (cm)','rel_cin_qua'=>'Relação Cintura/Quadril',
           'gordura'=>'% de Gordura','peso_gordura'=>'Peso da gordura (kg)','massa_magra'=>'Peso da massa magra (kg)','peso_corporal_total'=>'Peso Corporal Total (kg)','peso_a_perder'=>'Peso a Perder (kg)','total_agua_corpo'=>'Total de água do corpo (litros)','perc_agua_massa_magra'=>'% de água da massa magra (litros)','taxa_metabolica'=>'Taxa metabóloca basal (Calorias/Dia)','frequencia_card_rep'=>'Frequência Cardíaca Repouso (bpm)',
@@ -133,7 +141,7 @@ class TestController extends Controller
       $show = true;
 
 
-      return view('tests.test_report',compact('clients','item_name','test','show'));
+      return view('report.test_report',compact('clients','item_name','test','show','setting'));
     }
 
     public function sendMail($id)
@@ -155,7 +163,7 @@ class TestController extends Controller
       $test = Test::find($id);
       $show = false;
 
-        Mail::send('tests.test_report',compact('clients','item_name','test','show'),function ($message) use ($email)
+        Mail::send('report.test_report',compact('clients','item_name','test','show'),function ($message) use ($email)
         {
         //  $message->from('ailtonsemedo.2006@gmail.com');
           $message->to($email)->subject('Ficha de Avaliação Física');
@@ -180,12 +188,10 @@ class TestController extends Controller
         $test = Test::find($id);
         $show = false;
 
-        $view =  \View::make('tests.test_report',compact('clients','item_name','test','show'))->render();
+        $view =  \View::make('report.test_report',compact('clients','item_name','test','show'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-      //  return $pdf->stream('invoice');
-
-      //  $pdf = \PDF::loadView('report.index',compact('clients','item_name','test','show'))->setPaper('a4', 'portrait')->setWarnings(false);
+        
         return $pdf->stream('final_test.pdf');//stream();
     }
 

@@ -32,18 +32,21 @@ $('document').ready(function(){
 
     //triggered when modal is about to be shown
   $('#confirmDelete').on('show.bs.modal', function(e) {
-      //get data-id attribute of the clicked element
-      var url = "/products/";
-      console.log(url);
-      var productId = $(e.relatedTarget).data('product_id');
-      var productName = $(e.relatedTarget).data('product_name');
-      $("#confirmDelete #pName").val( productName );
-      console.log(productName);
-      console.log(productId);
+
+      var url = $(e.relatedTarget).data('url');
+      var title = $(e.relatedTarget).data('title');
+      console.log(title);
+
+      var id = $(e.relatedTarget).data('id');
+      var name = $(e.relatedTarget).data('name');
+
+      $("#confirmDelete #pName").val( name );
+
       var modal = $(this)
-      modal.find('.modal-body #pName').text(productName)
-      //modal.find('.modal-footer #pName').val(productName)
-      $("#delForm").attr('action', url + productId );//e.g. 'domainname/products/' + productId
+      modal.find('.modal-body #pName').text(name)
+      modal.find('.modal-title #pTitle').text(title)
+
+      $("#delForm").attr('action', url + id );
   });
 });
 

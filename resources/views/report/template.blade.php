@@ -665,7 +665,7 @@
 
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-                            <h1 style="text-align: center;"><span style="font-size:14px">Hello {{ $clients[0]->name }},</span></h1>
+                            <h1 style="text-align: center;"><span style="font-size:14px">Hello {{ $name }},</span></h1>
 &nbsp;
 
 <div style="text-align: center;">This sent from PhysicalTest Application with your {{ $document }} in attachment.<br>

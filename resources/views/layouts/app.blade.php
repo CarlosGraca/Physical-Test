@@ -51,6 +51,7 @@ desired effect
     @include('layouts.partials.controlsidebar')
 
     @include('layouts.shared.modal')
+    @include('layouts.shared.modal_del')
 
     @include('layouts.partials.footer')
 

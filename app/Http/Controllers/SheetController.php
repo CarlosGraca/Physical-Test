@@ -25,7 +25,7 @@ class SheetController extends Controller
      */
     public function index()
     {     
-        $sheets = Sheet::all();
+        $sheets = Sheet::all()->where('status','1');
         if (Request::wantsJSON()){
            return $sheets;
         }else{
@@ -217,18 +217,18 @@ class SheetController extends Controller
      */
     public function destroy(Sheet $sheet)
     {
-        $deleted= $sheet->delete();
+
+      $sheet->status='0';
+      $sheet->save();
+        /*$deleted= $sheet->delete();*/
         session()->flash('flash_message','Sheet was removed with success');
 
-        if (Request::wantsJson()){
-          return (string) $deleted;
-        }else{
+        /*if (Request::wantsJson()){
+          return $sheet;
+        }else{*/
           return redirect('sheets');
-        }
+        //}
     }
 
-    public function download($d)
-    {
-      # code...
-    }
+    
 }

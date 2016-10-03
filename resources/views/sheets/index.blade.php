@@ -30,14 +30,14 @@
 	            <div class="box-body">
 	                <table id="table-sheets" class="table table-bordered table-striped">
 		                <thead>
-		                  <tr>
-		                    <th style="width: 10px">#</th>
-		                    <th>Aluno</th>
-		                    <th>Email</th>
-		                    <th>Contato</th>
-		                    <th>Data Criação</th>
-		                    <th></th>
-		                  </tr>
+			                <tr>
+			                    <th style="width: 10px">#</th>
+			                    <th>Aluno</th>
+			                    <th>Email</th>
+			                    <th>Contato</th>
+			                    <th>Data Criação</th>
+			                    <th></th>
+			                </tr>
 		                </thead>
 		                <tbody>
 		                    @foreach ($sheets as $sheet)
@@ -50,19 +50,19 @@
 										{{ $sheet->created_at }}
   									</td>
   									<td>
-		                    <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete"data-product_id="{{ $sheet->id }}" data-product_name="{{ $sheet->id }}">
-		                      <i class="fa fa-trash"></i>
-		                    </button>
-                  			<a href="{{ route('sheets.edit',$sheet->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
-                          </a>
+					                    <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $sheet->id }}" data-name="{{ $sheet->name }}" data-title="Confirm provider deletion" data-url="/sheets/">
+						                            <i class="fa fa-trash"></i>
+						                        </button> 
+			                  			<a href="{{ route('sheets.edit',$sheet->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" ])>   <i class="fa fa-edit"></i>
+			                            </a>
 
-                    		<a href="{{ url('/handout/pdf/') }}/{{$sheet->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>
-                        </a>
-                  	</td>
-										</tr>
-                    @endforeach
-                	<tbody>
-                </table>
+			                    		<a href="{{ url('/handout/pdf/') }}/{{$sheet->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>
+				                        </a>
+				                  	</td>
+							 	</tr>
+                           @endforeach
+                	    <tbody>
+                    </table>
 	            </div>
 	        </div>
 	    </div>

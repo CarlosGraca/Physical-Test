@@ -53,7 +53,7 @@
 						                            <i class="fa fa-trash"></i>
 						                        </button>
 												</button>
-												<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
+												<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" ])>   <i class="fa fa-edit"></i>
 													</a>
 												<a href="{{ url('tests/pdf/') }}/{{$test->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>
 														</a>

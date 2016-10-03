@@ -89,6 +89,54 @@ function bar_chart(label, dataTests, dataSheets) {
 
   barChartOptions.datasetFill = false;
   barChart.Bar(barChartData, barChartOptions);
+
+  //-------------
+  //- LINE CHART -
+  //--------------
+  if($("#lineChart").get(0)!= undefined){
+    var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+    var lineChart = new Chart(lineChartCanvas);
+    var lineChartOptions = {
+      //Boolean - If we should show the scale at all
+      showScale: true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines: false,
+      //String - Colour of the grid lines
+      scaleGridLineColor: "rgba(0,0,0,.05)",
+      //Number - Width of the grid lines
+      scaleGridLineWidth: 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines: true,
+      //Boolean - Whether the line is curved between points
+      bezierCurve: true,
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension: 0.3,
+      //Boolean - Whether to show a dot for each point
+      pointDot: false,
+      //Number - Radius of each point dot in pixels
+      pointDotRadius: 4,
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth: 1,
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius: 20,
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke: true,
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth: 2,
+      //Boolean - Whether to fill the dataset with a color
+      datasetFill: true,
+      //String - A legend template
+      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio: true,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive: true
+    };
+    lineChartOptions.datasetFill = false;
+    lineChart.Line(areaChartData, lineChartOptions);
+  }
 }
 
 function getDashboardData(start, end, type) {
@@ -114,16 +162,19 @@ function getDashboardData(start, end, type) {
             if(result['tests'].length > result['sheets'].length){
 
                 for (var i = 0; i < result['tests'].length; i++) {
-                  if((result['sheets'].length > 0) && (result['sheets'][i] != undefined)){
-                      if ( (result['tests'][i].month == result['sheets'][i].month)) {
+                  if((result['sheets'].length > 0)){
+                    for(var j = 0; j < result['sheets'].length; j++  ){
+                      if ( (result['tests'][i].month == result['sheets'][j].month)) {
                           labels.push(months_pt[result['tests'][i].month]);
                           dataTests.push(result['tests'][i].test_count);
-                          dataSheets.push(result['sheets'][i].sheet_count);
+                          dataSheets.push(result['sheets'][j].sheet_count);
                       }else{
                         labels.push(months_pt[result['tests'][i].month]);
                         dataTests.push(result['tests'][i].test_count);
                         dataSheets.push(0);
                       }
+
+                    }
                   }else{
                     labels.push(months_pt[result['tests'][i].month]);
                     dataTests.push(result['tests'][i].test_count);
@@ -134,15 +185,17 @@ function getDashboardData(start, end, type) {
             }else{
 
               for (var i = 0; i < result['sheets'].length; i++) {
-                if( (result['tests'].length > 0) && (result['tests'][i] != undefined) ){
-                    if (result['tests'][i].month == result['sheets'][i].month) {
+                if( (result['tests'].length > 0) ){
+                    for(var j = 0; j < result['tests'].length; j++  ){
+                      if (result['tests'][j].month == result['sheets'][i].month) {
+                          labels.push(months_pt[result['sheets'][i].month]);
+                          dataSheets.push(result['sheets'][i].sheet_count);
+                          dataTests.push(result['tests'][j].test_count);
+                      }else{
                         labels.push(months_pt[result['sheets'][i].month]);
                         dataSheets.push(result['sheets'][i].sheet_count);
-                        dataTests.push(result['tests'][i].test_count);
-                    }else{
-                      labels.push(months_pt[result['sheets'][i].month]);
-                      dataSheets.push(result['sheets'][i].sheet_count);
-                      dataTests.push(0);
+                        dataTests.push(0);
+                      }
                     }
                   }else{
                     labels.push(months_pt[result['sheets'][i].month]);

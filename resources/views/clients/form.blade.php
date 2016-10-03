@@ -21,7 +21,7 @@
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('name','Name:') !!}
-			{!! Form::text('name', ($type == 'update' ? $client->name : null) , ['class'=>'form-control']) !!}
+			{!! Form::text('name', ($type == 'update' ? $client->name : null) , ['class'=>'form-control','onfocus'=>'onfocus']) !!}
 		</div>
 	</div>
     <div class="col-lg-3 col-md-4 col-sm-6">

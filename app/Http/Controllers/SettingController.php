@@ -44,7 +44,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        return view('settings.create');    
+        return view('settings.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class SettingController extends Controller
         $setting->telemovel = $request->telemovel;
         $setting->nif = $request->nif;
         $setting->cod_postal = $request->cod_postal;
- 
+
         if ($request->hasFile('logo_url')){
             $image = $request->file('logo_url');
             $filename  = time() . '.' . $image->getClientOriginalExtension();
@@ -75,7 +75,7 @@ class SettingController extends Controller
             $setting->logo_url = $filename;
              var_dump($filename);
         }
-       
+
         $setting->save();
 
         session()->flash('flash_message','Setting was stored with success');
@@ -105,7 +105,7 @@ class SettingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Setting $setting)
-    {  
+    {
         return view('settings.edit',compact('setting'));
     }
 
@@ -127,7 +127,7 @@ class SettingController extends Controller
         $setting->nif = $request->nif;
         $setting->cod_postal = $request->cod_postal;
         $setting->logo_url = $request->logo;
-        
+
         if ($request->hasFile('logo_url')){
 
             $image = $request->file('logo_url');
@@ -141,16 +141,16 @@ class SettingController extends Controller
               }
             }
 
-            Image::make($image->getRealPath())->resize(300, 250)->save($path);
+            Image::make($image->getRealPath())->save($path);
 
             $setting->logo_url = $filename;
         }
          $setting->save();
         session()->flash('flash_message','Setting was update with success');
-        
+
         if (Request::wantsJson()){
             return $setting;
-        }else{            
+        }else{
             return redirect('settings');
         }
     }

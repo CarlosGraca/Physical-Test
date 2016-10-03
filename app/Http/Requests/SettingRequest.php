@@ -31,7 +31,6 @@ class SettingRequest extends FormRequest
             'telefone' => 'required',
             'localizacao' => 'required',
             'cod_postal' => 'required',
-             'logo'=>'required',
         ];
     }
 }

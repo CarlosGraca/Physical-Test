@@ -28,10 +28,10 @@
 	        <div class="col-xs-12">
 	          <h2 class="page-header">
 	            @if(isset($setting->logo_url))
-    		    	<img  src="/uploads/{{$setting->logo_url}}" id="logo" class="img-thumbnail" alt="Cinque Terre" width="150" height="100">
-    		    @else
-    		    	<img  src="/img/round-logo.jpg" id="logo" class="img-thumbnail" alt="Cinque Terre" width="150" >
-		        @endif
+    		    		<img  src="/uploads/{{$setting->logo_url}}" id="logo" class="img" alt="Cinque Terre" width="150">
+    		    	@else
+    		    		<img  src="/img/round-logo.jpg" id="logo" class="img-thumbnail" alt="Cinque Terre" width="150" >
+		        	@endif
 	            <small class="pull-right"><strong style="text-align: center;">Avaliação da Apetidão Física</strong></small>
 	          </h2>
             </div><!-- /.col -->

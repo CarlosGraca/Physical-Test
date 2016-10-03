@@ -1,5 +1,4 @@
 $('#btn-email').click(function(){
-
   createPDF('send');
   return false;
 });

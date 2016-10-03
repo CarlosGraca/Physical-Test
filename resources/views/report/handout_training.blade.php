@@ -1,27 +1,40 @@
 
-
 @extends('layouts.report')
 
+@section('htmlheader_title')
+	Ficha de Treino de {{$clients[0]->name}}
+@endsection
+
 @section('main-content')
-<style type="text/css">
+    <style type="text/css">
         .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
             padding: 1px 1px 1px 8px;
         }
     </style>
+    <div class="loader" style="display:none; position:fixed; right:0; bottom:0; top:0;">
+		<img src="{{asset('img/gears.gif')}}" />
+	</div>
 <!-- Main content -->
-    <section class="invoice">
+    <section class="invoice" id="download-content">
        <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                <a href="#" id="print-page" onclick="window.print();" class="btn btn-default pull-right"><i class="fa fa-print"></i> Print</a>
-                <a href="{{ url('pdf') }}/1" id="download-page"  style="margin-right: 5px;" class="btn btn-default pull-right"><i class="fa fa-cloud-download"></i> Download</a>             
+                 <span style="display: none;" id='document'>Ficha de Treino</span>
+                <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>
+                <a href="#" id="print-page" onclick="window.print();"  style="margin-right: 5px;" class="btn btn-default pull-right"><i class="fa fa-print"></i> Print</a>
+                <a href="#" id="btn-download"  style="margin-right: 5px;" class="btn btn-default pull-right"><i class="fa fa-cloud-download"></i> Download</a> 
+                <a href="#" id="btn-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>            
             </div>
         </div>
         <!-- title row -->
 	    <div class="row">
 	        <div class="col-xs-12">
 	          <h2 class="page-header">
-	            <img src="/img/logo.png" width="150" alt="" > 
+    		       @if(isset($setting->logo_url))
+        		    	<img  src="/uploads/{{$setting->logo_url}}" class="img-thumbnail" alt="Cinque Terre" width="150" height="100">
+        		    @else
+        		    	<img  src="/img/round-logo.jpg" class="img-thumbnail" alt="Cinque Terre" width="150" >
+    		        @endif
 	            <small class="pull-right"><strong style="text-align: center;">Ficha de Treino</strong></small>
 	          </h2>
             </div><!-- /.col -->
@@ -29,21 +42,31 @@
         <!-- info row -->
         <div class="row invoice-info">
            
-	        <div class="col-sm-4 invoice-col">
+	        <div class="col-sm-3 invoice-col">
 	          <address>
-	            <b>Nome: </b>{{$clients[0]->name}}<br>
-	            <b>Data de nacimento: </b>{{$clients[0]->dt_nasc}}<br>
+	            <b>Nome: </b><span id="name">{{$clients[0]->name}}</span><br>
+	            <b>Data de nacimento: </b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $clients[0]->dt_nasc)->format('d-m-Y') }}<br>
 	          </address>
 	        </div><!-- /.col -->
-	        <div class="col-sm-4 invoice-col">
+	        <div class="col-sm-3 invoice-col">
 	          <address>
-	            <b>Aluno: </b>{{$clients[0]->type_student}}<br>
+	            @if ($clients[0]->type_student === 1 )
+	            	<b>Aluno: </b>Iniciante<br>
+	            @elseif($clients[0]->type_student === 2)
+	            	<b>Aluno: </b>Intermédio<br>
+	             @elseif($clients[0]->type_student === 3)
+	            	<b>Aluno: </b>Avançado<br>
+	            @endif
+	            
 	            <b>Objetivos: </b>{{$clients[0]->objective}}<br>
 	          </address>
 	        </div><!-- /.col -->
-	        <div class="col-sm-4 invoice-col">
+	        <div class="col-sm-3 invoice-col">
 	          <b>Dias de treino: </b>{{$clients[0]->training_days}}<br>
-	          <b>Data de Inicio: </b>{{$clients[0]->date_start}}<br>
+	          <b>Data de Inicio: </b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $clients[0]->date_start)->format('d-m-Y') }}<br>
+	        </div><!-- /.col -->
+	        <div class="col-sm-3 invoice-col">
+	          <b>Email: </b><span id="email">{{$clients[0]->email}}</span><br>
 	        </div><!-- /.col -->
         </div><!-- /.row -->
 	   <!-- Table row -->

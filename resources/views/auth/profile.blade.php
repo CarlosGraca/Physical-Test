@@ -33,8 +33,11 @@
 					        <div class="tab-pane active" id="profile">
 					            <div class="row">
 					        		<div class="col-lg-3 text-center">
-
-							            <img  src="/uploads/{{Auth::user()->avatar}}" class="img-circle" alt="Cinque Terre" width="150" height="150">
+							            @if(Auth::user()->avatar)
+						    		    	<img  src="/uploads/{{Auth::user()->avatar}}" class="img-circle" alt="Cinque Terre" width="150" height="150">
+						    		    @else
+						    		    	<img  src="/img/avatar3.png" class="img-circle" alt="Cinque Terre" width="150" >
+								        @endif
 
 							            <div style="margin-top: 10px">
 								            {{ Form::open(array('url'=>'upload', 'files'=>true)) }}

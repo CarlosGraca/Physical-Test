@@ -1,5 +1,8 @@
 <?php
 
+Route::singularResourceParameters();
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,16 +27,18 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('sheet_details', 'SheetDetailController');
 	Route::resource('clients','ClientController');
 	Route::resource('auth/profile', 'Auth\ProfileController');
-  //Route::resource('dashboard','DashboardGraphic');
+    Route::resource('settings','SettingController');
 });
 
 
 //Route
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 
-Route::get('/pdf/handout/{id}', 'SheetController@handout_training');
+Route::get('/handout/pdf/{id}', 'SheetController@handout_training');
 Route::get('/tests/pdf/{id}', 'TestController@test_report');
-Route::post('/tests/pdf/sendMail/', 'MailController@sendTestReport');
+
+Route::post('/pdf/sendMail/', 'MailController@sendReport');
+
 Route::get('tests/pdf/download/{id}', 'TestController@downloadPDF');
 
 Route::post('tests/pdf/downloadhtml/', 'TestController@downloadHTMLtoPDF');
@@ -55,3 +60,8 @@ Route::post('update/user/field/','Auth\ProfileController@updateField');
 
 //Example
 Route::get('pdf', 'PdfController@invoice');
+
+Route::get('exemple/exemple1',function(){
+   $uri = Request::segment(1);
+   echo($uri);
+});

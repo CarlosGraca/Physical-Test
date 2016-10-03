@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @include('layouts.partials.htmlheader')
     @show
 
-    <body>
+    <body class="layout-boxed">
         <!-- Main content -->
         <div class="container">
             <!-- Portfolio Item Heading -->

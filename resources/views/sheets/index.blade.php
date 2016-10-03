@@ -14,6 +14,7 @@
 
 
 @section('main-content')
+    @include('layouts.shared.alert')
 	<div class="row">
 	    <div class="col-lg-12 col-xs-6">
 	        <div class="box box-default">
@@ -50,15 +51,13 @@
 										{{ $sheet->created_at }}
   									</td>
   									<td> 							                          
-                                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete"data-product_id="{{ $sheet->id }}" data-product_name="{{ $sheet->id }}">
-				                            <i class="fa fa-trash"></i>
-				                        </button> 
+                                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $sheet->id }}" data-name="{{ $sheet->name }}" data-title="Confirm sheet deletion" data-url="/sheets/">
+						                            <i class="fa fa-trash"></i>
+						                        </button>  
 				                        <a href="{{ route('sheets.edit',$sheet->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
                                         </a> 
 
-				                        <a href="{{ url('pdf/handout/') }}/{{$sheet->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                        </a>
-                                        <a href="{{ route('sheets.edit',$sheet->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
+				                        <a href="{{ url('handout/pdf') }}/{{$sheet->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>
                                         </a>
                                     </td>
   								</tr>

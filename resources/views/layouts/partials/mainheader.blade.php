@@ -78,7 +78,11 @@
 
                 <li class="user user-menu">
                   <a href="{{ url('auth/profile') }}" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.profile') }}">
-                    <img src='/uploads/{{Auth::user()->avatar}}' class="user-image" alt="User Image"/>
+                    @if(Auth::user()->avatar)
+                        <img  src="/uploads/{{Auth::user()->avatar}}" class="user-image" alt="Cinque Terre" >
+                    @else
+                        <img  src="/img/avatar3.png"  class="user-image" alt="Cinque Terre" >
+                    @endif
                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
                     <span class="hidden-xs"><span class="name">{{ Auth::user()->name }}</span></span>
                   </a>

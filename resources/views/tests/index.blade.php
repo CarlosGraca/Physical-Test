@@ -14,13 +14,14 @@
 
 
 @section('main-content')
+    @include('layouts.shared.alert')
 	<div class="row">
 	    <div class="col-lg-12">
 	        <div class="box box-default">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	              <div class="pull-left box-tools">
-	                  <a href="{{ url('tests/create') }}" class="btn btn-success btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_test') }}">
+	                  <a href="{{ url('tests/create') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_test') }}">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
 
@@ -40,26 +41,26 @@
 		                  </tr>
 		                </thead>
 		                <tbody>
-										  @foreach ($tests as $test)
-												<tr>
-													<td>{{$test->id}}</td>
-													<td>{{$test->client->name}}</td>
-													<td>{{$test->client->email}}</td>
-													<td>{{$test->client->telemovel }}/{{$test->client->telefone }}</td>
-													<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $test->dt_test)->format('d-m-Y') }}</td>
-													<td>
-															<button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete" data-product_id="{{ $test->id }}" data-product_name="{{ $test->id }}">
-																<i class="fa fa-trash"></i>
-															</button>
-															<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
-																</a>
-															<a href="{{ url('tests/pdf/') }}/{{$test->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-																	</a>
-															<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
-															</a>
-													</td>
-												</tr>
-											@endforeach
+							  @foreach ($tests as $test)
+									<tr>
+										<td>{{$test->id}}</td>
+										<td>{{$test->client->name}}</td>
+										<td>{{$test->client->email}}</td>
+										<td>{{$test->client->telemovel }}/{{$test->client->telefone }}</td>
+										<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $test->dt_test)->format('d-m-Y') }}</td>
+										<td>
+												<button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $test->id }}" data-name="{{ $test->name }}" data-title="Confirm test deletion" data-url="/tests/">
+						                            <i class="fa fa-trash"></i>
+						                        </button> 
+												</button>
+												<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
+													</a>
+												<a href="{{ url('tests/pdf/') }}/{{$test->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>
+														</a>
+												
+										</td>
+									</tr>
+								@endforeach
 
 		                <tbody>
                     </table>

@@ -1,3 +1,5 @@
+var months_pt = {'January':'Janeiro','February':'Fevereiro','March':'Março','April':'Abril','May':'Maio','June':'Junho','July':'Julho','August':'Agosto','September':'Setembro','October':'Outubro','November':'Novembro','December':'Dezembro'};
+
 $('.daterange').daterangepicker({
   locale: {
       format: 'DD-MM-YYYY'
@@ -8,13 +10,14 @@ $('.daterange').daterangepicker({
     'Last 7 Days': [moment().subtract(6, 'days'), moment()],
     'Last 30 Days': [moment().subtract(29, 'days'), moment()],
     'This Month': [moment().startOf('month'), moment().endOf('month')],
-    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+    'This Year': [moment().startOf('year'), moment().endOf('year')]
   },
-  startDate: moment().subtract(29, 'days'),
-  endDate: moment()
+  startDate: moment().startOf('month'),
+  endDate: moment().endOf('month')
 }, function (start, end) {
     //bar_chart(start,end);
-    console.log('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
+    //console.log('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
     $('.range-date').text('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
   //window.alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
     getDashboardData(start,end,'');
@@ -103,21 +106,26 @@ function getDashboardData(start, end, type) {
         success: function (result) {
             var labels = [], dataTests=[], dataSheets=[];
 
+            if( (result['tests'].length == 0) && (result['sheets'].length == 0) ){
+              var infoHtml = "No data to show. Please choose another Date.";
+              toastr.info(infoHtml,{timeOut: 5000} ).css("width","300px");
+            }
+
             if(result['tests'].length > result['sheets'].length){
 
                 for (var i = 0; i < result['tests'].length; i++) {
-                  if(result['sheets'].length > 0){
-                      if (result['tests'][i].month == result['sheets'][i].month) {
-                          labels.push(result['tests'][i].month);
+                  if((result['sheets'].length > 0) && (result['sheets'][i] != undefined)){
+                      if ( (result['tests'][i].month == result['sheets'][i].month)) {
+                          labels.push(months_pt[result['tests'][i].month]);
                           dataTests.push(result['tests'][i].test_count);
                           dataSheets.push(result['sheets'][i].sheet_count);
                       }else{
-                        labels.push(result['tests'][i].month);
+                        labels.push(months_pt[result['tests'][i].month]);
                         dataTests.push(result['tests'][i].test_count);
                         dataSheets.push(0);
                       }
                   }else{
-                    labels.push(result['tests'][i].month);
+                    labels.push(months_pt[result['tests'][i].month]);
                     dataTests.push(result['tests'][i].test_count);
                     dataSheets.push(0);
                   }
@@ -126,18 +134,18 @@ function getDashboardData(start, end, type) {
             }else{
 
               for (var i = 0; i < result['sheets'].length; i++) {
-                if(result['tests'].length > 0){
+                if( (result['tests'].length > 0) && (result['tests'][i] != undefined) ){
                     if (result['tests'][i].month == result['sheets'][i].month) {
-                        labels.push(result['sheets'][i].month);
+                        labels.push(months_pt[result['sheets'][i].month]);
                         dataSheets.push(result['sheets'][i].sheet_count);
                         dataTests.push(result['tests'][i].test_count);
                     }else{
-                      labels.push(result['sheets'][i].month);
+                      labels.push(months_pt[result['sheets'][i].month]);
                       dataSheets.push(result['sheets'][i].sheet_count);
                       dataTests.push(0);
                     }
                   }else{
-                    labels.push(result['sheets'][i].month);
+                    labels.push(months_pt[result['sheets'][i].month]);
                     dataSheets.push(result['sheets'][i].sheet_count);
                     dataTests.push(0);
                   }

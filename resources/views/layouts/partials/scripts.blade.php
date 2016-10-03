@@ -12,7 +12,7 @@
 <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
 
 <!-- DATE RANGE PICKER PLUGIN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="{{ asset('/plugins/moment.js/moment-with-locales.js') }}"></script>
 <script src="{{ asset('/plugins/daterangepicker/daterangepicker.js') }}"></script>
 
 <!-- DATE PICKER -->
@@ -23,7 +23,7 @@
 
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type="text/javascript" src="{{asset('/plugins/toastr.js/build/toastr.min.js')}}"></script>
 
 <script>
   var AdminLTEOptions = {
@@ -48,8 +48,8 @@
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
       fixed layout. -->
-<script src="{{ asset('/plugins/jQueryUI/jquery-ui.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/plugins/rails/rails.js')}}"></script>
+<script src="{{ asset('/plugins/jQueryUI/jquery-ui.min.js') }}" type="text/javascript" ></script>
+<script src="{{ asset('/plugins/rails/rails.js')}}" type="text/javascript" ></script>
 <script src="{{ asset('/js/loadRemoteContent.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>

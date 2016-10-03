@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('password/reset','Auth\ResetPasswordController@reset');
 
 Route::group(['middleware' => ['web']], function(){
 	Route::resource('tests', 'TestController');

@@ -31,12 +31,19 @@ class ResetPasswordController extends Controller
      *
      * @return void
      */
-    
-
-    public function reset(Request $request){
-        $user = Auth::user();
-        $pass = Input::get(bcrypt('password'));
-        $user->password= $pass;
-        $user->save();
+    public function reset(Request $request)
+    {   
+            $this->validate($request, [
+                    'password' => 'required|min:6|confirmed',
+            ]);
+            $credentials = $request->only(
+                    'password', 'password_confirmation'
+            );
+            $user = \Auth::user();
+            $user->password = bcrypt($credentials['password']);
+            $user->save();
+            return redirect('/');
     }
+
+    
 }

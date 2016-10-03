@@ -73,7 +73,7 @@ class SettingController extends Controller
             Image::make($image->getRealPath())->resize(300, 150)->save($path);
 
             $setting->logo_url = $filename;
-             var_dump($filename);
+            
         }
 
         $setting->save();

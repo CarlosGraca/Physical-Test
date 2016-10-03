@@ -30,7 +30,7 @@
     //Enable sidebar expand on hover effect for sidebar mini
     //This option is forced to true if both the fixed layout and sidebar mini
     //are used together
-    sidebarExpandOnHover: true,
+    sidebarExpandOnHover: false,
     //BoxRefresh Plugin
     enableBoxRefresh: true,
     //Bootstrap.js tooltip
@@ -50,6 +50,10 @@
       fixed layout. -->
 <script src="{{ asset('/plugins/jQueryUI/jquery-ui.min.js') }}" type="text/javascript" ></script>
 <script src="{{ asset('/plugins/rails/rails.js')}}" type="text/javascript" ></script>
+<script src="{{ asset('/plugins/jspdf/jspdf.min.js') }}" type="text/javascript" ></script>
+<script src="{{ asset('/plugins/jspdf/jspdf.debug.js') }}" type="text/javascript" ></script>
+<script src="{{ asset('/plugins/html2canvas/dist/html2canvas.js')}}" type="text/javascript" ></script>
+
 <script src="{{ asset('/js/loadRemoteContent.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/physical_test.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/handout_training.js') }}" type="text/javascript"></script>
@@ -58,14 +62,10 @@
 <script src="{{ asset('/js/clients.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/users.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/date.format.js') }}" type="text/javascript"></script>
-<script type="text/javascript" src="{{ asset('/plugins/html2canvas/dist/html2canvas.js')}}"></script>
-
-
 
 
 
 <!-- Scripts in development mode -->
-<script type="text/javascript" src="{{ asset('js/jspdf.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/document.js')}}"></script>
 <script type="text/javascript" src="{{ asset('/js/email.js')}}"></script>

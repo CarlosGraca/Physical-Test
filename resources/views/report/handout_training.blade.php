@@ -22,8 +22,8 @@
                  <span style="display: none;" id='document'>Ficha de Treino</span>
                 <a href="#" id="close-page" onclick="window.close();" class="btn btn-default pull-right"><i class="fa fa-close"></i> Close</a>
                 <a href="#" id="print-page" onclick="window.print();"  style="margin-right: 5px;" class="btn btn-default pull-right"><i class="fa fa-print"></i> Print</a>
-                <a href="#" id="btn-download"  style="margin-right: 5px;" class="btn btn-default pull-right"><i class="fa fa-cloud-download"></i> Download</a> 
-                <a href="#" id="btn-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>            
+                <a href="#" id="btn-download" type='sheets' style="margin-right: 5px;" class="btn btn-default pull-right"><i class="fa fa-cloud-download"></i> Download</a>
+                <a href="#" id="btn-email" class="btn btn-default pull-right" style="margin-right: 5px;"><i class="fa fa-envelope"></i> Email</a>
             </div>
         </div>
         <!-- title row -->
@@ -31,7 +31,7 @@
 	        <div class="col-xs-12">
 	          <h2 class="page-header">
     		       @if(isset($setting->logo_url))
-        		    	<img  src="/uploads/{{$setting->logo_url}}" class="img-thumbnail" alt="Cinque Terre" width="150" height="100">
+        		    	<img  src="/uploads/{{$setting->logo_url}}" class="img" alt="Cinque Terre" width="150">
         		    @else
         		    	<img  src="/img/round-logo.jpg" class="img-thumbnail" alt="Cinque Terre" width="150" >
     		        @endif
@@ -41,7 +41,7 @@
         </div>
         <!-- info row -->
         <div class="row invoice-info">
-           
+
 	        <div class="col-sm-3 invoice-col">
 	          <address>
 	            <b>Nome: </b><span id="name">{{$clients[0]->name}}</span><br>
@@ -57,7 +57,7 @@
 	             @elseif($clients[0]->type_student === 3)
 	            	<b>Aluno: </b>Avançado<br>
 	            @endif
-	            
+
 	            <b>Objetivos: </b>{{$clients[0]->objective}}<br>
 	          </address>
 	        </div><!-- /.col -->
@@ -74,7 +74,7 @@
             <div class="col-xs-12 table-responsive">
                 <table class="table table-bordered table-xs" class="tabela-sheet" id="table-biceps-antebraco">
 	                <thead>
-	                    <tr>		                        
+	                    <tr>
 	                        <th class="col-md-1">Ordem</th>
 	                        <th class="col-md-8">Exercicio: <span class="text-uppercase text-danger">Biceps e Antebraço</span></th>
 	                        <th class="col-md-1">Séries</th>
@@ -90,9 +90,9 @@
                                   <td>{{$element->serie}}</td>
                                   <td>{{$element->repet}}</td>
                                   <td>{{$element->map}}</td>
-                              </tr>	    
-                        @endforeach           
-	                </tbody>                                     
+                              </tr>
+                        @endforeach
+	                </tbody>
 	            </table>
             </div>
         </div>
@@ -100,7 +100,7 @@
 	        <div class="col-xs-12 table-responsive">
                 <table class="table table-bordered" class="tabela-sheet" id="table-triceps">
 	                <thead>
-	                    <tr>		                        
+	                    <tr>
 	                        <th class="col-md-1">Ordem</th>
 	                        <th class="col-md-8">Exercicio: <span class="text-uppercase text-danger">Triceps</span></th>
 	                        <th class="col-md-1">Séries</th>
@@ -116,9 +116,9 @@
                                   <td>{{$element->serie}}</td>
                                   <td>{{$element->repet}}</td>
                                   <td>{{$element->map}}</td>
-                              </tr>	    
-                        @endforeach           
-	                </tbody>                                     
+                              </tr>
+                        @endforeach
+	                </tbody>
 	            </table>
             </div>
         </div>
@@ -126,7 +126,7 @@
 	        <div class="col-xs-12 table-responsive">
                 <table class="table table-bordered" class="tabela-sheet" id="table-ombro-trapezio">
 	                <thead>
-	                    <tr>		                        
+	                    <tr>
 	                        <th class="col-md-1">Ordem</th>
 	                        <th class="col-md-8">Exercicio: <span class="text-uppercase text-danger">Ombro e Trapézio</span></th>
 	                        <th class="col-md-1">Séries</th>
@@ -142,9 +142,9 @@
                                   <td>{{$element->serie}}</td>
                                   <td>{{$element->repet}}</td>
                                   <td>{{$element->map}}</td>
-                              </tr>	    
-                        @endforeach           
-	                </tbody>                                     
+                              </tr>
+                        @endforeach
+	                </tbody>
 	            </table>
 	        </div>
 	    </div>
@@ -152,7 +152,7 @@
 	        <div class="col-xs-12 table-responsive">
 	            <table class="table table-bordered" class="tabela-sheet" id="table-peitoral">
 	                <thead>
-	                    <tr>		                        
+	                    <tr>
 	                        <th class="col-md-1">Ordem</th>
 	                        <th class="col-md-8">Exercicio: <span class="text-uppercase text-danger">Peitoral</span></th>
 	                        <th class="col-md-1">Séries</th>
@@ -168,9 +168,9 @@
                                   <td>{{$element->serie}}</td>
                                   <td>{{$element->repet}}</td>
                                   <td>{{$element->map}}</td>
-                              </tr>	    
-                        @endforeach           
-	                </tbody>                                     
+                              </tr>
+                        @endforeach
+	                </tbody>
 	            </table>
 	         </div>
 		</div>
@@ -178,7 +178,7 @@
             <div class="col-xs-12 table-responsive">
                 <table class="table table-bordered" class="tabela-sheet" id="table-costas">
 	                <thead>
-	                    <tr>		                        
+	                    <tr>
 	                        <th class="col-md-1">Ordem</th>
 	                        <th class="col-md-8">Exercicio: <span class="text-uppercase text-danger">Costas</span></th>
 	                        <th class="col-md-1">Séries</th>
@@ -194,17 +194,17 @@
                                   <td>{{$element->serie}}</td>
                                   <td>{{$element->repet}}</td>
                                   <td>{{$element->map}}</td>
-                              </tr>	    
-                        @endforeach           
-	                </tbody>                                     
+                              </tr>
+                        @endforeach
+	                </tbody>
 	            </table>
             </div>
-        </div>	        
+        </div>
         <div class="row">
             <div class="col-xs-12 table-responsive">
 	            <table class="table table-bordered" class="tabela-sheet" id="table-quadril-perna-coxa">
 	                <thead>
-	                    <tr>		                        
+	                    <tr>
 	                        <th class="col-md-1">Ordem</th>
 	                        <th class="col-md-8">Exercicio: <span class="text-uppercase text-danger">Quadril, Coxa e Perna</span></th>
 	                        <th class="col-md-1">Séries</th>
@@ -220,9 +220,9 @@
 	                            <td>{{$element->serie}}</td>
 	                            <td>{{$element->repet}}</td>
 	                            <td>{{$element->map}}</td>
-	                        </tr>	    
-	                    @endforeach             
-	                </tbody>                                     
+	                        </tr>
+	                    @endforeach
+	                </tbody>
 	            </table>
 	        </div>
         </div>
@@ -230,7 +230,7 @@
 	        <div class="col-xs-12 table-responsive">
 	            <table class="table table-bordered" class="tabela-sheet" id="table-abdomen">
 	                <thead>
-	                    <tr>		                        
+	                    <tr>
 	                        <th class="col-md-1">Ordem</th>
 	                        <th class="col-md-8">Exercicio: <span class="text-uppercase text-danger">Abdomen</span></th>
 	                        <th class="col-md-1">Séries</th>
@@ -246,13 +246,12 @@
                                 <td>{{$element->serie}}</td>
                                 <td>{{$element->repet}}</td>
                                 <td>{{$element->map}}</td>
-                            </tr>	    
-                        @endforeach             
-	                </tbody>                                     
+                            </tr>
+                        @endforeach
+	                </tbody>
 	            </table>
             </div>
         </div>
 	</section><!-- /.content -->
     <div class="clearfix"></div>
 @endsection
-

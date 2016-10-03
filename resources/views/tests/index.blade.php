@@ -51,19 +51,18 @@
 										<td>
 												<button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $test->id }}" data-name="{{ $test->name }}" data-title="Confirm test deletion" data-url="/tests/">
 						                            <i class="fa fa-trash"></i>
-						                        </button> 
+						                        </button>
 												</button>
 												<a href="{{ route('tests.edit',$test->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
 													</a>
 												<a href="{{ url('tests/pdf/') }}/{{$test->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>
 														</a>
-												
+
 										</td>
 									</tr>
 								@endforeach
-
 		                <tbody>
-                    </table>
+                </table>
 	            </div>
 	        </div>
 	    </div>

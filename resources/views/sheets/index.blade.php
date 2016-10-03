@@ -23,10 +23,10 @@
 	                  <a href="{{ url('sheets/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="{{ trans('adminlte_lang::message.new_sheet') }}">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
-	                  
+
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
-	  
+
 	            <div class="box-body">
 	                <table id="table-sheets" class="table table-bordered table-striped">
 		                <thead>
@@ -49,22 +49,20 @@
   									<td>
 										{{ $sheet->created_at }}
   									</td>
-  									<td> 							                          
-                                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete"data-product_id="{{ $sheet->id }}" data-product_name="{{ $sheet->id }}">
-				                            <i class="fa fa-trash"></i>
-				                        </button> 
-				                        <a href="{{ route('sheets.edit',$sheet->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
-                                        </a> 
+  									<td>
+		                    <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-toggle="tooltip" title="Delete"data-product_id="{{ $sheet->id }}" data-product_name="{{ $sheet->id }}">
+		                      <i class="fa fa-trash"></i>
+		                    </button>
+                  			<a href="{{ route('sheets.edit',$sheet->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" data-remote='true'])>   <i class="fa fa-edit"></i>
+                          </a>
 
-				                        <a href="{{ url('pdf/handout/') }}/{{$sheet->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Pdf" ])>   <i class="fa fa-file-pdf-o"></i>
-                                        </a>
-                                        <a href="{{ route('sheets.edit',$sheet->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Email" data-remote='true'])>   <i class="fa fa-send"></i>
-                                        </a>
-                                    </td>
-  								</tr>
-		                    @endforeach
-		                <tbody>     
-                    </table>
+                    		<a href="{{ url('/handout/pdf/') }}/{{$sheet->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>
+                        </a>
+                  	</td>
+										</tr>
+                    @endforeach
+                	<tbody>
+                </table>
 	            </div>
 	        </div>
 	    </div>

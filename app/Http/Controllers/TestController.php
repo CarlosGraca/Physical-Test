@@ -191,7 +191,7 @@ class TestController extends Controller
         $view =  \View::make('report.test_report',compact('clients','item_name','test','show'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        
+
         return $pdf->stream('final_test.pdf');//stream();
     }
 

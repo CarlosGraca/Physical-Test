@@ -32,14 +32,14 @@ function createPDF(type){
             canvas.webkitImageSmoothingEnabled = false;
             canvas.mozImageSmoothingEnabled = false;
             canvas.imageSmoothingEnabled = false;
-            var img = canvas.toDataURL("image/png");
+            var img = canvas.toDataURL("image/jpeg");
           //  var img = canvas.toDataURL("image/jpeg");
           //  $('.invoice').append('<img src=\''+img+'\' />');
             //console.log(img);
             doc = new jsPDF('portrait','mm','a4');
             //doc.addImage(img, 'JPEG', 15, 40, 180, 160);
             //doc.addImage(img, 'JPEG', 5, 10, 0, 0);
-            doc.addImage(img, 'PNG', 5, 10, 0, 0);
+            doc.addImage(img, 'JPEG', 5, 10, 0, 0);
 
             if(type === 'download'){
               doc.save(''+$('.report').find('title').text()+'.pdf');

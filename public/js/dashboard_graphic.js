@@ -53,6 +53,7 @@ function bar_chart(label, dataTests, dataSheets) {
   //-------------
   //- BAR CHART -
   //-------------
+  if($("#barChart").get(0)!= undefined){
   var barChartCanvas = $("#barChart").get(0).getContext("2d");
   var barChart = new Chart(barChartCanvas);
   var barChartData = areaChartData;
@@ -89,7 +90,7 @@ function bar_chart(label, dataTests, dataSheets) {
 
   barChartOptions.datasetFill = false;
   barChart.Bar(barChartData, barChartOptions);
-
+}
   //-------------
   //- LINE CHART -
   //--------------
@@ -216,6 +217,10 @@ function getDashboardData(start, end, type) {
 }
 
 $(function () {
+  startDashboard();
+});
+
+function startDashboard() {
   var date = new Date();
 
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -231,4 +236,19 @@ $(function () {
   var chart = $('#barChart').get(0);
   if(chart !== undefined)
     getDashboardData(startMonth,endMonth,'local');
+}
+
+//CHANGE GRAPHIC SHOW!
+$(document).on('click','#line',function() {
+  $('#barChart').remove();
+  $('.chart').html('<canvas id="lineChart" style="height:230px"></canvas>');
+  $('#chart-title').text($(this).text());
+  startDashboard();
+});
+
+$(document).on('click','#bar', function() {
+  $('#barChart').remove();
+  $('.chart').html('<canvas id="barChart" style="height:230px"></canvas>');
+  $('#chart-title').text($(this).text());
+  startDashboard();
 });

@@ -23,7 +23,7 @@
 
 
 
-<script type="text/javascript" src="{{asset('/plugins/toastr.js/build/toastr.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('/plugins/toastr/toastr.js')}}"></script>
 
 <script>
   var AdminLTEOptions = {

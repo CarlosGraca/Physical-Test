@@ -37,7 +37,7 @@
 
     <link href="  {{ asset('/plugins/jQueryUI/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" href="{{asset('/plugins/toastr.js/build/toastr.min.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.scss')}}" type="text/css" />
 
     <link href="{{ asset('/css/search.css') }}" rel="stylesheet" type="text/css" />
 

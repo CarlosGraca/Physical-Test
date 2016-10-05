@@ -23,10 +23,10 @@ class DashboardGraphic extends Controller
      //echo $startDate;
      //echo $endDate;
 
-      $tests = Test::select(\DB::raw('MONTHNAME(created_at) as month'), \DB::raw("DATE_FORMAT(created_at,'%Y-%m') as monthNum"), DB::raw('count(*) as test_count'))
+      $tests = Test::select(\DB::raw('MONTHNAME(created_at) as month'), \DB::raw("DATE_FORMAT(created_at,'%Y-%m') as monthNum"), DB::raw('count(*) as test_count'))->where('status','1')
       ->whereBetween(\DB::raw("DATE_FORMAT(created_at,'%Y-%m-%d')"), [$startDate, $endDate])->orderBy(DB::raw("DATE_FORMAT(created_at,'%Y-%m')"))->groupBy(DB::raw("MONTHNAME(created_at)"))->groupBy(DB::raw("DATE_FORMAT(created_at,'%Y-%m')"))->get();
 
-      $sheets = Sheet::select(\DB::raw('MONTHNAME(created_at) as month'), \DB::raw("DATE_FORMAT(created_at,'%Y-%m') as monthNum"), DB::raw('count(*) as sheet_count'))
+      $sheets = Sheet::select(\DB::raw('MONTHNAME(created_at) as month'), \DB::raw("DATE_FORMAT(created_at,'%Y-%m') as monthNum"), DB::raw('count(*) as sheet_count'))->where('status','1')
       ->whereBetween(\DB::raw("DATE_FORMAT(created_at,'%Y-%m-%d')"), [$startDate, $endDate])->orderBy(DB::raw("DATE_FORMAT(created_at,'%Y-%m')"))->groupBy(DB::raw("MONTHNAME(created_at)"))->groupBy(DB::raw("DATE_FORMAT(created_at,'%Y-%m')"))->get();
 
     //  $tests = DB::select("select MONTHNAME(dt_test) as month, DATE_FORMAT(dt_test,'%Y-%m') as monthNum, count(tests.id) as test_count from `tests` group by DATE_FORMAT(dt_test,'%Y-%m'), MONTHNAME(dt_test)");

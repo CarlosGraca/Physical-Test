@@ -27,7 +27,7 @@ class TestController extends Controller
     public function index()
     {
 
-        $tests = Test::all();
+        $tests = Test::all()->where('status','1');
         if (Request::wantsJSON()){
            return $tests;
         }else{
@@ -57,7 +57,7 @@ class TestController extends Controller
         //\Session::flash('flash_message','Test successfully added.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
-            return $test;
+            return ['tests'=>$test,'message'=>'Test created with success!'];
         }else{
              return view('tests.create');
         }
@@ -86,7 +86,13 @@ class TestController extends Controller
      */
     public function edit($id)
     {
-        //
+          $client = DB::table('tests')->where('tests.id',$id)
+                   ->join('clients','tests.client_id','=','clients.id')
+                   ->TAKE(1)->get();
+
+           $test = Test::find($id);
+
+          return view('tests.edit',compact('client','test'));
     }
 
     /**
@@ -98,7 +104,14 @@ class TestController extends Controller
      */
     public function update(TestRequest $request, $id)
     {
-        //
+      $test = Test::find($id);
+      $test->update($request->all());
+
+      if (Request::wantsJson()){
+          return ['tests'=>$test,'message'=>'Test updated with success!'];
+      }else{
+           //return view('tests.create');
+      }
     }
 
     /**
@@ -107,14 +120,14 @@ class TestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Test $test)
+    public function destroy(Test $test)
     {
         // delete
-        /*$test = Test::find($id);
-        $test->delete();*/
-        $deleted= $test->delete();
-        session()->flash('flash_message','Sheet was removed with success');
-
+        //$test = Test::find($test->);
+      /*  $test->delete();*/
+        $test->status = 0;
+        $deleted= $test->save();
+        session()->flash('flash_message','Tests was removed with success');
         if (Request::wantsJson()){
           return (string) $deleted;
         }else{

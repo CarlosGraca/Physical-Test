@@ -28,7 +28,7 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('sheet_details', 'SheetDetailController');
 	Route::resource('clients','ClientController');
 	Route::resource('auth/profile', 'Auth\ProfileController');
-    Route::resource('settings','SettingController');
+  Route::resource('settings','SettingController');
 });
 
 

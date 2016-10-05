@@ -17,4 +17,11 @@
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         {{ Session::get('flash_message') }}
     </div>
+@elseif(Session::has('flash_message_error'))
+    <div id='alert-box' class="alert alert-danger"
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <b>Ops...</b>
+        Incorrect current password
+        
+    </div>
 @endif

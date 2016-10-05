@@ -39,7 +39,7 @@
 								</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 	            <div class="box-body">
-	                 @include('clients.form', ['type'=>'update','client'=>$client])
+	                 @include('clients.form', ['type'=>'update','client'=>$client,'form'=>'client'])
 	            </div>
 	        </div>
 	    </div>

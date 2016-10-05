@@ -8,12 +8,11 @@
             <div class="modal-body">
                 <p>Are you sure you want to delete <span id="pName"></span>?</p>
             </div>
-            <div class="modal-footer">                
+            <div class="modal-footer">
                 {!! Form::open(['method' => 'DELETE', "id"=>"delForm"]) !!}
-
-                <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> Delete</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" id="destroy-btn">
-                <i class="glyphicon glyphicon-remove"></i> Close</button>
+                  <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> Delete</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" id="destroy-btn">
+                  <i class="glyphicon glyphicon-remove"></i> Close</button>
                 {!! Form::close() !!}
             </div>
         </div>

@@ -43,7 +43,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                 @include('tests.form', array(''=>''))
+	                 @include('tests.form', ['type'=>'create','client'=>null,'tests'=>null])
 	            </div>
 	        </div>
 	    </div>

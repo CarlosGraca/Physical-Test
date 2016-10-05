@@ -52,7 +52,7 @@
 				{!! Form::date('dt_nasc', ($type == 'update' ? $client->dt_nasc : null) , ['class'=>'form-control']) !!}
 			</div>
 		</div>
-		@if($type=='tests')
+		@if($form =='tests')
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="form-group form-group-sm">
 					{!! Form::label('age','Idade:') !!}
@@ -63,7 +63,7 @@
 		<div class="col-lg-3 col-md-4 col-sm-6">
 		    <div class="form-group form-group-sm">
 		      {!! Form::label('sexo','Sexo:') !!}
-		      {!! Form::select('sexo', [0=>'Escolha a Opção',1=>'Masculino',2=>'Feminino'],($type == 'update' ? $client->sexo : null), ['class'=>'form-control']) !!}
+		      {!! Form::select('sexo', [0=>'Escolha a Opção',1=>'Masculino',2=>'Feminino'],($type == 'update' ? $client->sexo : 0), ['class'=>'form-control']) !!}
 		    </div>
 	  </div>
 
@@ -73,7 +73,7 @@
 				{!! Form::text('morada', ($type == 'update' ? $client->morada : null) , ['class'=>'form-control']) !!}
 			</div>
 		</div>
-		@if($type=='tests')
+		@if($form =='tests')
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="form-group form-group-sm">
 					{!! Form::label('dt_test','Data Avaliação:') !!}

@@ -21,12 +21,6 @@ $('document').ready(function(){
             var estatura = $('#estatura').val();
             var imc = get_imc(peso,estatura);
             $('#imc').val(imc);
-            var idade = $('#age').val();
-            if (((idade >= 15) || (idade <= 19)) &&  ((imc >= 18) || (imc <= 21.6)) ){
-                $('#class').val('Exelente');
-            }else{
-                $('#class').val(' ');
-            }
         }
     });
 
@@ -35,13 +29,7 @@ $('document').ready(function(){
         if (estatura) {
             var peso = $('#peso').val();
             var imc = get_imc(peso,estatura);
-            var idade = $('#age').val();
             $('#imc').val(imc);
-            if (((idade >= 15) || (idade <= 19)) &&  ((imc >= 18) || (imc <= 21.6)) ){
-                $('#class').val('Exelente');
-            }else{
-                $('#class').val(' ');
-            }
         }
     });
 
@@ -111,13 +99,15 @@ function get_massa_magra(peso,pesso_gordura){
     return mm;
 }
 
-$(document).change('#imc',function(){
+function changeIMC(){
   var imc = parseFloat($('#imc').val());
   var sex = $('#sexo').val();
   var age = parseInt($('#age').val());
   var color = getColor(imc,sex,age,'imc');
   $('#imc').css('background',color).css('color','white');
-});
+}
+
+$(document).change('#imc',changeIMC());
 
 function get_cintura_quatril(cintura,quatril){
     var cq;
@@ -1400,6 +1390,10 @@ $('#add-test').on('click',function(){
 
 function save_test(client_id,type){
     var my_url = "/tests";
+    if(type == 'PUT' || type == 'PATCH'){
+       my_url = "/tests/"+$('#test_id').val();
+    }
+
     var formDataTest = {
         client_id : client_id,
         estatura : $('#estatura').val(),
@@ -1436,10 +1430,12 @@ function save_test(client_id,type){
         dataType: 'json',
         success: function (data) {
           console.log(data);
-          var successHtml = 'Test saved with success';
-          toastr.success(successHtml,{timeOut: 5000} ).css("width","300px");
+          //var successHtml = 'Test saved with success';
+          toastr.success(data.message,{timeOut: 5000} ).css("width","300px");
           $('#add-test').css('display','none');
+          $('#edit-test').css('display','none');
         //  window.location = '/tests';
+          return false;
         },
         error: function (data) {
             console.log('Error:', data);
@@ -1638,3 +1634,55 @@ function createPDF(type){
   return false;
 
 });*/
+
+check();
+
+
+//FUNCTION TO CHECK FIELDS CHANGES BEFORE UPDATE
+function check() {
+  var dt_test = new Date($('#dt_test').val());
+  var dt_nasc = new Date($('#dt_nasc').val());
+  var estatura = $('#estatura').val();
+  var peso = $('#peso').val();
+  var gordura = $('#gordura').val();
+  var cintura = $('#cintura').val();
+  var quadril = $('#quadril').val();
+
+  if((dt_nasc != undefined && dt_nasc != 'Invalid Date') && (dt_test != undefined && dt_test != 'Invalid Date') ){
+    console.log(dt_nasc);
+    var idade = get_idade(dt_test,dt_nasc);
+     $('#age').val(parseInt(idade));
+  }
+
+  if(estatura != undefined && peso != undefined){
+    var imc = get_imc(peso,estatura);
+    $('#imc').val(imc);
+    changeIMC();
+  }
+
+  if(gordura != undefined && gordura != ''){
+    var pg = get_peso_gordura(gordura,peso);
+    $('#peso_gordura').val(pg);
+
+    var mm = get_massa_magra(peso,pg);
+    $('#massa_magra').val(mm);
+  }
+
+  if( (cintura != undefined && cintura != '') && (quadril != undefined && quadril != '') ){
+    var cq = get_cintura_quatril(cintura,quadril);
+    $('#rel_cin_qua').val(cq);
+  }
+
+}
+
+//UPDATE TEST
+$(document).on('click','#edit-test',function(e){
+    e.preventDefault();
+    var type = "PATCH";
+
+    var client_id = $('#client_id').val();
+    if (client_id != '') {
+      saveClient('tests','update');
+      save_test(client_id,type);
+    }
+});

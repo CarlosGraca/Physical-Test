@@ -34,10 +34,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $total_tests = DB::table('tests')
+        $total_tests = DB::table('tests')->where('status','1')
                 ->count();
 
-        $total_sheets = DB::table('sheets')
+        $total_sheets = DB::table('sheets')->where('status','1')
                 ->count();
         return view('home',compact('total_sheets','total_tests'));
     }

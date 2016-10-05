@@ -1652,6 +1652,8 @@ function check() {
     console.log(dt_nasc);
     var idade = get_idade(dt_test,dt_nasc);
      $('#age').val(parseInt(idade));
+     var sexo = $('#sexo').val();
+     popoverClassificacao(idade,sexo);
   }
 
   if(estatura != undefined && peso != undefined){

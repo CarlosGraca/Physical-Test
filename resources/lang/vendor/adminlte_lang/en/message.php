@@ -141,4 +141,5 @@ return [
     'new_client'              => 'New Client',
     'update_client'           => 'Update Client',
     'client'                  => 'Client',
+    'update_test'             => 'Update Test',
 ];

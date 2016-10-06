@@ -1364,21 +1364,7 @@ function popoverClassificacao(idade, sexo) {
 $('#add-test').on('click',function(){
     var type = "POST";
     var my_url_cli = "/clients";
-    var token = $('meta[name="csrf_token"]').attr('content');
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': token
-        }
-    });
 
-    var formDataCli = {
-        name : $('#name').val(),
-        email : $('#email').val(),
-        dt_nasc : $('#dt_nasc').val(),
-        sexo: $('#sexo').val(),
-        telefone: $('#telefone').val(),
-        telemovel: $('#telemovel').val(),
-    }
     var client_id = $('#client_id').val();
     if (client_id === '') {
       saveClient('tests','create');

@@ -13,14 +13,11 @@ $('.daterange').daterangepicker({
     'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
     'This Year': [moment().startOf('year'), moment().endOf('year')]
   },
-  startDate: moment().startOf('month'),
-  endDate: moment().endOf('month')
+  startDate: moment().startOf('year'),
+  endDate: moment().endOf('year')
 }, function (start, end) {
-    //bar_chart(start,end);
-    //console.log('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
     $('.range-date').text('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
-  //window.alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-    getDashboardData(start,end,'');
+    getDashboardData(start,end);
 });
 
 function bar_chart(label, dataTests, dataSheets) {
@@ -140,11 +137,11 @@ function bar_chart(label, dataTests, dataSheets) {
   }
 }
 
-function getDashboardData(start, end, type) {
+function getDashboardData(start, end) {
   var url = 'dashboard/graphic';
 
-  var startDate = (type == 'local' ? start : start.format('YYYY-MM-DD')),
-  endDate = (type == 'local' ? end : end.format('YYYY-MM-DD')),
+  var startDate = start.format('YYYY-MM-DD'),
+  endDate = end.format('YYYY-MM-DD'),
   params = {'startDate':startDate, 'endDate':endDate};
 
   $.ajax({
@@ -221,21 +218,14 @@ $(function () {
 });
 
 function startDashboard() {
-  var date = new Date();
 
-  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  var start = moment().startOf('year');
+  var end = moment().endOf('year');
 
-  var startMonthShow = dateFormat(firstDay, 'dd-mm-yyyy');
-  var endMonthShow = dateFormat(lastDay, 'dd-mm-yyyy');
-
-  var startMonth = dateFormat(firstDay, 'yyyy-mm-dd');
-  var endMonth = dateFormat(lastDay, 'yyyy-mm-dd');
-
-  $('.range-date').text('Start: '+startMonthShow+' - End: '+endMonthShow);
+  $('.range-date').text('Start: '+start.format('DD-MM-YYYY')+' - End: '+end.format('DD-MM-YYYY'));
   var chart = $('#barChart').get(0);
   if(chart !== undefined)
-    getDashboardData(startMonth,endMonth,'local');
+    getDashboardData(start,end);
 }
 
 //CHANGE GRAPHIC SHOW!

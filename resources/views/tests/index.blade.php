@@ -12,6 +12,7 @@
   {{ trans('adminlte_lang::message.list_test') }}
 @endsection
 
+@inject('TestController', 'App\Http\Controllers\TestController')
 
 @section('main-content')
     @include('layouts.shared.alert')
@@ -34,8 +35,8 @@
 		                  <tr>
 		                    <th style="width: 10px" class="col-md-1">#</th>
 		                    <th class="col-md-3">Aluno</th>
-		                    <th class="col-md-2">Email</th>
-		                    <th class="col-md-2">Contato</th>
+		                    <th class="col-md-2">IMC</th>
+		                    <th class="col-md-2">Gordura</th>
 		                    <th class="col-md-2">Data Avaliação</th>
 		                    <th class="col-md-2"></th>
 		                  </tr>
@@ -43,10 +44,10 @@
 		                <tbody>
 							  @foreach ($tests as $test)
 									<tr>
-										<td>{{$test->id}}</td>
-										<td>{{$test->client->name}}</td>
-										<td>{{$test->client->email}}</td>
-										<td>{{$test->client->telemovel }}/{{$test->client->telefone }}</td>
+										<td>{{ $test->id }}</td>
+										<td>{{ $test->client->name }}</td>
+										<td>{{ $TestController->get_imc($test->peso,$test->estatura) }}</td>
+										<td>{{ $test->gordura }}</td>
 										<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $test->dt_test)->format('d-m-Y') }}</td>
 										<td>
 												<button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $test->id }}" data-name="{{ $test->name }}" data-title="Confirm test deletion" data-url="/tests/">
@@ -57,7 +58,6 @@
 													</a>
 												<a href="{{ url('tests/pdf/') }}/{{$test->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>
 														</a>
-
 										</td>
 									</tr>
 								@endforeach

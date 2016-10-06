@@ -215,4 +215,10 @@ class TestController extends Controller
         return $pdf->stream('final_test.pdf');
     }
 
+    public function get_imc($peso, $estatura)
+    {
+      $imc = $peso/($estatura/100 * $estatura/100);
+      return $imc;
+    }
+
 }

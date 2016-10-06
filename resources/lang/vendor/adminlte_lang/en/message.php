@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'update_handout'          => 'Update Handout Training',
     'lock'                    => 'Lock',
     'settings'                => 'Settings',
     'tests'                   => 'Tests',

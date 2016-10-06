@@ -25,7 +25,7 @@ class ClientRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|max:255|unique:clients',
             'dt_nasc' => 'required',
         ];
     }

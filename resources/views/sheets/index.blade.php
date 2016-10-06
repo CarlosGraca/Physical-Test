@@ -33,9 +33,11 @@
 			                <tr>
 			                    <th style="width: 10px">#</th>
 			                    <th>Aluno</th>
-			                    <th>Email</th>
-			                    <th>Contato</th>
-			                    <th>Data Criação</th>
+			                    <th>Tipo Aluno</th>
+			                    <th>objectivo</th>
+			                    <th>Dias de Treino</th>
+			                    <th>KG</th>
+			                    <th>Data Inicio</th>
 			                    <th></th>
 			                </tr>
 		                </thead>
@@ -43,17 +45,25 @@
 		                    @foreach ($sheets as $sheet)
   								<tr>
   									<td>{{$sheet->id}}</td>
-  									<td>{{$sheet->client->name}}</td>
-  									<td>{{$sheet->client->email}}</td>
-  									<td>{{$sheet->client->telemovel }}/{{$sheet->client->telefone }}</td>
-  									<td>
-										{{ $sheet->created_at }}
+  									<td>{{$sheet->client->name}}</td><td>
+  									@if ($sheet->type_student === 1 )
+						            	Iniciante
+						            @elseif($sheet->type_student === 2)
+						            	Intermédio
+						             @elseif($sheet->type_student === 3)
+						            	Avançado
+						            @endif
+						            </td>
+  									<td>{{$sheet->objective }}</td>
+  									<td>{{$sheet->training_days }}</td>
+  									<td>{{$sheet->kg }}</td>
+  									<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $sheet->date_start)->format('d-m-Y') }}
   									</td>
   									<td>
 					                    <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $sheet->id }}" data-name="{{ $sheet->name }}" data-title="Confirm provider deletion" data-url="/sheets/">
 						                            <i class="fa fa-trash"></i>
 						                        </button> 
-			                  			<a href="{{ route('sheets.edit',$sheet->id) }}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" ])>   <i class="fa fa-edit"></i>
+			                  			<a href="{{ url('/sheet/edit') }}/{{$sheet->id}}" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Editar" ])>   <i class="fa fa-edit"></i>
 			                            </a>
 
 			                    		<a href="{{ url('/handout/pdf/') }}/{{$sheet->id}}" target="_blank" class="btn btn-primary btn-xs", data-toggle="tooltip" title="Detalhes" ])>   <i class="fa fa-list-alt"></i>

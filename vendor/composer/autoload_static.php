@@ -374,8 +374,11 @@ class ComposerStaticInit32221c7d830bed4f58f877ac241bf0b7
     public static $classMap = array (
         'AddAlterateTestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_28_140927_add_alterate_tests_table.php',
         'AddAvatarToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_26_012344_add_avatar_to_users_table.php',
+        'AddColumnsSheetTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_06_014227_add_columns_sheet_table.php',
         'AddMoradaToCreateClientsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_29_151329_add_morada_to_create_clients_table.php',
+        'AddNoteColumnsSheetTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_06_032354_add_note_columns_sheet_table.php',
         'AddStatusToTestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_04_113449_add_status_to_tests_table.php',
+        'ChangeColumnsSheetTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_06_014646_change_columns_sheet_table.php',
         'ChangeNullableSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_194906_change_nullable_settings_table.php',
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'CreateClientsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_15_200515_create_clients_table.php',

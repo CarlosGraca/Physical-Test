@@ -111,8 +111,8 @@ $(document).change('#imc',changeIMC());
 
 function get_cintura_quatril(cintura,quatril){
     var cq;
-    console.log(cintura);
-    console.log(quatril);
+   // console.log(cintura);
+    //console.log(quatril);
     if (cintura && quatril) {
         cq = cintura/quatril;
     } else {
@@ -1459,7 +1459,7 @@ $(function() {
 
   var sex = $('.sex').text();
   var age = $('.age').text();
-  console.log('age: '+age+' - sex: '+sex);
+  //console.log('age: '+age+' - sex: '+sex);
   popoverClassificacao(age,sex);
 });
 

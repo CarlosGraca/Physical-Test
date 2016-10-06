@@ -73,7 +73,7 @@ function pdfExport(type) {
 
   $('.no-print').css('display','none');
   $('.invoice').css('border','none');
-  var pdf = new jsPDF('l','pt','a4'),
+  var pdf = new jsPDF('p','pt','a4'),
       source = $('#download-content')[0];
 /* pdf.addHTML (element, x, y, options, callback ); */
 var options = {

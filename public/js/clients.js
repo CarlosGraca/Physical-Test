@@ -17,7 +17,7 @@ $('#edit-client').click(function(){
 // OBS: ESSA FUNÇÃO PODE SER CHAMADA EM QUALQUER PARTE DO PROGRAMA EM QUE SE DESEJA CRIAR UM NOVO CLIENTE.
 //      BASTA PASSAR OS PARAMENTROS NECESSARIO ELA ESTARA APTA PARA DESEMPENHAR A SUA FUNÇÃO
 
-function saveClient(form,form_type) {
+function saveClient(form,form_type,callback) {
   var type = "POST";
   var my_url_cli;
   if(form_type === 'create'){
@@ -52,7 +52,7 @@ function saveClient(form,form_type) {
       data: formDataCli,
       dataType: 'json',
       success: function (data) {
-        // console.log(data);
+          callback(data);
           if(form === 'clients'){
             if(form_type === 'create'){
               var successHtml = 'Client saved with success';

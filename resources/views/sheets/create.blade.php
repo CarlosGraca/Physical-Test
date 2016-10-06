@@ -17,7 +17,7 @@
     @include('layouts.shared.alert')
 	<div class="row">
 	    <div class="col-lg-12">
-	        <div class="box box-default">
+	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	                <h3 class="box-title">
 	              	    <strong>{{ trans('adminlte_lang::message.evaluator') }}:
@@ -36,7 +36,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                 @include('sheets.form')
+	                 @include('sheets.form',['type'=>'create','client'=>null,'tests'=>null])
 		        </div>
 	        </div>
 	    </div>

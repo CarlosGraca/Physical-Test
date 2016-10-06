@@ -1,85 +1,66 @@
 <style type="text/css">
     * {
-    font-family:Consolas
-}
+        font-family:Consolas
+    }
 
-.tabela-sheet {
-    border:solid 1px;
-    width:100%
-}
+    .tabela-sheet {
+        border:solid 1px;
+        width:100%
+    }
 
-.tabela-sheet td {
-    border:solid 1px;
-}
+    .tabela-sheet td {
+        border:solid 1px;
+    }
 
-.tabela-sheet .celulaEmEdicao {
-    padding: 0;
-}
+    .tabela-sheet .celulaEmEdicao {
+        padding: 0;
+    }
 
-.tabela-sheet .celulaEmEdicao input[type=text]{
-    width:100%;
-    border:0;
-    background-color:rgb(255,253,210);  
-}
+    .tabela-sheet .celulaEmEdicao input[type=text]{
+        width:100%;
+        border:0;
+        background-color:rgb(255,253,210);  
+    }
 </style>
+@include('clients.form',['form'=>null,'client'=>$client,'type'=>$type])
 <div class="row">
-    {!! Form::hidden('client_id', null, ['class'=>'form-control','id'=>'client_id']) !!}
-    <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="form-group form-group-sm">
-            {!! Form::label('name','Name:') !!}
-            {{ Form::open(['action' => ['SearchController@autocomplete'], 'method' => 'GET']) }}
-                {{ Form::text('name', '', ['id' =>  'name', 'placeholder' =>  'Enter name','class'=>'form-control'])}}
-                
-            {{ Form::close() }}
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-		<div class="form-group form-group-sm">
-			{!! Form::label('email','Email:') !!}
-			{!! Form::email('email', null, ['class'=>'form-control']) !!}
-		</div>
-	</div>
-    
-    <div class="col-lg-3 col-md-4 col-sm-6">
-		<div class="form-group form-group-sm">
-			{!! Form::label('dt_nasc','Data de Nascimento:') !!}
-			{!! Form::date('dt_nasc',null, ['class'=>'form-control']) !!}
-		</div>
-	</div>
+    {!! Form::hidden('sheet_id', ($type == 'update' ? $sheet->id : null), ['class'=>'form-control','id'=>'sheet_id']) !!}
+    <span ><strong class="title">Dados Ficha de Treino</strong></span>
+    <hr class="h-divider" >
     <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
             {!! Form::label('kg','Kg:') !!}
-            {!! Form::text('kg', null, ['class'=>'form-control']) !!}
+            {!! Form::text('kg',  $type == 'update' ?  $sheet->kg : null, ['class'=>'form-control']) !!}
         </div>
     </div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('altura','Altura:') !!}
-			{!! Form::text('altura', null, ['class'=>'form-control']) !!}
+			{!! Form::text('altura',$type == 'update' ?  $sheet->altura : null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('objective','Objectivos:') !!}
-			{!! Form::text('objective', null, ['class'=>'form-control']) !!}
+			{!! Form::text('objective', $type == 'update' ?  $sheet->objective : null, ['class'=>'form-control']) !!}
 		</div>
 	</div>	
 	<div class="col-lg-3 col-md-4 col-sm-6">
 	    <div class="form-group form-group-sm">
 	      {!! Form::label('type_student','Aluno:') !!}
-	      {!! Form::select('type_student', [0=>'Escolha a Opção',1=>'Iniciante',2=>'Intermédio',3=>'Avançado'],NULL, ['class'=>'form-control']) !!}
+	      {!! Form::select('type_student', [$type == 'update' ?  $sheet->type_student : 0=>'Escolha a Opção',1=>'Iniciante',2=>'Intermédio',3=>'Avançado'],null, ['class'=>'form-control']) !!}
 	    </div>
 	</div>
     <div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('training_days','Dias de treino:') !!}
-			{!! Form::text('training_days', null, ['class'=>'form-control']) !!}
+			{!! Form::text('training_days', $type == 'update' ?  $sheet->training_days : null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<div class="form-group form-group-sm">
 			{!! Form::label('date_start','Data Inicio:') !!}
-			{!! Form::date('date_start', \Carbon\Carbon::now()->subDay(0)->format('Y-m-d'), ['class'=>'form-control']) !!}
+			{!! Form::date('date_start', $type == 'update' ?  $sheet->date_start : \Carbon\Carbon::now()->subDay(0)->format('Y-m-d'), ['class'=>'form-control']) !!}
 		</div>
 	</div>
 </div>
@@ -177,7 +158,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                   @foreach ($ombro_trapesio as $element)
+                   @foreach ($ombro_trapezio as $element)
                         <tr>
                             <td style="display:none;">{{ $element->id}}</td>
                             <td class="ordem"></td>
@@ -288,7 +269,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                   @foreach ($abdmen as $element)
+                   @foreach ($abdomen as $element)
                         <tr>
                             <td style="display:none;">{{ $element->id}}</td>
                             <td class="ordem"></td>
@@ -308,7 +289,7 @@
 	<div class="col-lg-12">
 		<div class="form-group">
 			{!! Form::label('note','Note:') !!}
-			{!! Form::textarea('note', null, ['class'=>'form-control','rows'=>'3','style'=>'width: 100%;'])  !!}
+			{!! Form::textarea('note', $type == 'update' ?  $sheet->note : null, ['class'=>'form-control','rows'=>'3','style'=>'width: 100%;'])  !!}
 		</div> 
 	</div>	
 </div>

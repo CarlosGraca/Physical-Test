@@ -30,12 +30,13 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('auth/profile', 'Auth\ProfileController');
   Route::resource('settings','SettingController');
 });
-
+Route::get('/handout/pdf/{id}', 'SheetController@handout_training');
+Route::get('/sheet/edit/{id}', 'SheetController@setSheet');
 
 //Route
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 
-Route::get('/handout/pdf/{id}', 'SheetController@handout_training');
+
 Route::get('/tests/pdf/{id}', 'TestController@test_report');
 
 Route::post('/pdf/sendMail/', 'MailController@sendReport');

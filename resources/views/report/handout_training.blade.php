@@ -2,7 +2,7 @@
 @extends('layouts.report')
 
 @section('htmlheader_title')
-	Ficha de Treino de {{$clients[0]->name}}
+	Ficha de Treino de {{$clients->name}}
 @endsection
 
 @section('main-content')
@@ -44,29 +44,30 @@
 
 	        <div class="col-sm-3 invoice-col">
 	          <address>
-	            <b>Nome: </b><span id="name">{{$clients[0]->name}}</span><br>
-	            <b>Data de nacimento: </b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $clients[0]->dt_nasc)->format('d-m-Y') }}<br>
+	            <b>Nome: </b><span id="name">{{$clients->name}}</span><br>
+	            <b>Data de nacimento: </b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $clients->dt_nasc)->format('d-m-Y') }}<br>
 	          </address>
 	        </div><!-- /.col -->
 	        <div class="col-sm-3 invoice-col">
 	          <address>
-	            @if ($clients[0]->type_student === 1 )
+	            @if ($clients->type_student === 1 )
 	            	<b>Aluno: </b>Iniciante<br>
-	            @elseif($clients[0]->type_student === 2)
+	            @elseif($clients->type_student === 2)
 	            	<b>Aluno: </b>Intermédio<br>
-	             @elseif($clients[0]->type_student === 3)
+	             @elseif($clients->type_student === 3)
 	            	<b>Aluno: </b>Avançado<br>
 	            @endif
 
-	            <b>Objetivos: </b>{{$clients[0]->objective}}<br>
+	            <b>Objetivos: </b>{{$clients->objective}}<br>
 	          </address>
 	        </div><!-- /.col -->
 	        <div class="col-sm-3 invoice-col">
-	          <b>Dias de treino: </b>{{$clients[0]->training_days}}<br>
-	          <b>Data de Inicio: </b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $clients[0]->date_start)->format('d-m-Y') }}<br>
+	          <b>Dias de treino: </b>{{$clients->training_days}}<br>
+	          <b>Data de Inicio: </b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $clients->date_start)->format('d-m-Y') }}<br>
 	        </div><!-- /.col -->
 	        <div class="col-sm-3 invoice-col">
-	          <b>Email: </b><span id="email">{{$clients[0]->email}}</span><br>
+	          <b>Email: </b><span id="email">{{$clients->email}}</span><br>
+	          <b>KG: </b><span id="kg">{{$clients->kg}}</span><br>
 	        </div><!-- /.col -->
         </div><!-- /.row -->
 	   <!-- Table row -->

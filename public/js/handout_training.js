@@ -27,10 +27,7 @@ $('document').ready(function () {
         });
     });
 
-    $('#add-sheet').on('click',function(){   
-        var type = "POST";        
-        var my_url_cli = "/clients";        
-        var dataCli;
+    $('#add-sheet').on('click',function(){ 
         var table =[];
         var token = $('meta[name="csrf_token"]').attr('content');
         $.ajaxSetup({
@@ -49,41 +46,15 @@ $('document').ready(function () {
 
         table.push(biceps_antebraco ,triceps, ombro_trapezio, peitoral, costas, quadril_perna_coxa, abdomen);
         
-
-        var formDataCli = {
-            name : $('#name').val(),
-            email : $('#email').val(),
-            dt_nasc : $('#dt_nasc').val()
-        }
         var client_id = $('#client_id').val();
-        if (client_id === '') {
-            $.ajax({
-                type: type,
-                url: my_url_cli,
-                data: formDataCli,
-                dataType: 'json',           
-                success: function (data ) {
-                    console.log(data);
-                    save_sheet(data.id,type,table)
-                },
-                error: function (data) {
-                    console.log('Error:', data);
-                    if( data.status === 422 ) {          
-                        $errors = data.responseJSON; 
-                        var errorsHtml= '';
-                        $.each( $errors, function( key, value ) {
-                            errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
-                        });
-                        toastr.error(errorsHtml,{timeOut: 5000} ).css("width","500px");                    
-                    }
-                }
-            });   
+        if (client_id === '') {                          
+             saveClient(null,'create',function (data) {
+                 save_sheet(data.id,type,table)
+             });           
         }else{
             save_sheet(client_id,type,table)
-        }
-               
+        }               
     });
-
 });
 
 function save_sheet(client_id,type,table){
@@ -97,7 +68,10 @@ function save_sheet(client_id,type,table){
         objective : $('#objective').val(),
         type_student : $('#type_student').val(),
         training_days: $('#training_days').val(),
-        date_start: $('#date_start').val()
+        date_start: $('#date_start').val(),
+        kg: $('#kg').val(),
+        altura: $('#altura').val(),
+        note : $('#note').val()
     }  
 
     $.ajax({

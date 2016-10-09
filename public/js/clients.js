@@ -52,7 +52,8 @@ function saveClient(form,form_type,callback) {
       data: formDataCli,
       dataType: 'json',
       success: function (data) {
-          callback(data);
+          if(callback) callback(data);
+          //callback(data);
           if(form === 'clients'){
             if(form_type === 'create'){
               var successHtml = 'Client saved with success';

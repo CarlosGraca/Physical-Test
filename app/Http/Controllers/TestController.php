@@ -215,6 +215,7 @@ class TestController extends Controller
         return $pdf->stream('final_test.pdf');
     }
 
+    //FUNTION TO MAKE IMC CALCULATOR
     public function get_imc($peso, $estatura)
     {
       $imc = $peso/($estatura/100 * $estatura/100);

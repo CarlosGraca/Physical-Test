@@ -35,8 +35,8 @@
 		                  <tr>
 		                    <th style="width: 10px" class="col-md-1">#</th>
 		                    <th class="col-md-3">Aluno</th>
-		                    <th class="col-md-2">IMC</th>
-		                    <th class="col-md-2">Gordura</th>
+		                    <th class="col-md-2">IMC kg/m²</th>
+		                    <th class="col-md-2">% de Gordura</th>
 		                    <th class="col-md-2">Data Avaliação</th>
 		                    <th class="col-md-2"></th>
 		                  </tr>
